@@ -1,0 +1,189 @@
+﻿@page "/Administrador/Eventos/Detalles/{Id}"
+@using Microsoft.AspNetCore.Identity
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager;
+
+<PageTitle>Detalles Conferencia - SLADE</PageTitle>
+@if (Rol == "Administrator")
+{
+    <MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Detalles de la Conferencia</MudText>
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="12">
+            <MudCard Style="height:100%;">
+                <MudCardContent>
+                    <MudGrid Class="px-0 ml-7">
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Nombre: </b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"> <MudText Typo="Typo.h6">@Evento.Nombre</MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Descripción:</b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.Descripcion</MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Hora de Inicio:</b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.HoraInicio</MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Hora a Finalizar:</b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.HoraTermino </MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Lugar: </b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Area.Nombre</MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Cupo Disponible: </b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.Cupo</MudText></MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="12">
+            <MudCard Style="height:100%;">
+                <MudCardContent>
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="12">
+                            <MudTable T="Model.RegistrosViewModel" Items="@ParticipantesRegistrados.OrderByDescending(p=>p.HoraDeRegistro)" Hover="true" Breakpoint="Breakpoint.Sm">
+                                <ToolBarContent>
+                                    <MudSpacer />
+                                    <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.Start"
+                                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                                </ToolBarContent>
+                                <HeaderContent>
+                                    <MudTh>Nombre</MudTh>
+                                    <MudTh>Email</MudTh>
+                                    <MudTh>Hora de Registro</MudTh>
+                                    <MudTh></MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd DataLabel="Nombre">@context.NombreParticipante</MudTd>
+                                    <MudTd DataLabel="Email">@context.Email</MudTd>
+                                    <MudTd DataLabel="Hora de Registro">@context.HoraDeRegistro</MudTd>
+                                    <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>EliminarRegistro(context)" Color="Color.Primary">Eliminar Registro</MudButton></MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+}
+else
+{
+
+    <AuthorizeView Roles="Administrator">
+    </AuthorizeView>
+}
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public Evento Evento { get; set; }
+    public Area Area { get; set; }
+    public List
+
+    <RegistrosViewModel>
+        ParticipantesRegistrados
+    { get; set; }
+    public Guid ParticipanteId { get; set; }
+    public bool ExisteRegistro { get; set; }
+    public Registro Registro { get; set; }
+    public string QRCodeSr { get; set; }
+    private string searchString = null;
+    public string Rol { get; set; }
+
+    private void OnSearch(string text)
+    {
+        IEnumerable<Model.RegistrosViewModel>
+            data = ParticipantesRegistrados;
+        searchString = text;
+        data = data.Where(element =>
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return false;
+            if (element.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            if (element.NombreParticipante.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            return false;
+        }).ToArray();
+        if (data.Count() == 0)
+        {
+            var participantes = _DbContext.Participante.ToList();
+            ParticipantesRegistrados = new List<RegistrosViewModel>
+                ();
+            foreach (var item in participantes)
+            {
+                var registro = _DbContext.Registro.FirstOrDefault(p => p.ParticipanteId == item.Id && p.EventoId == Evento.Id);
+                if (registro != null)
+                {
+                    var ob = new RegistrosViewModel
+                        {
+                            NombreParticipante = item.Nombre,
+                            HoraDeRegistro = registro.HoraDeRegistro,
+                            Email = item.Email,
+                            Id = registro.Id,
+                            ParticipanteId = item.Id,
+                            EventoId = registro.EventoId
+                        };
+                    ParticipantesRegistrados.Add(ob);
+                }
+            }
+        }
+        else
+        {
+            ParticipantesRegistrados = data.ToList();
+        }
+        StateHasChanged();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        Evento = _DbContext.Evento.FirstOrDefault(p => p.Id == Guid.Parse(Id));
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var current = authstate.User.Identity.Name;
+        var participanteId = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        Area = _DbContext.Area.FirstOrDefault(m => m.Id == Evento.AreaId);
+        var participantes = _DbContext.Participante.ToList();
+        ParticipantesRegistrados = new List<RegistrosViewModel>
+            ();
+        Rol = authstate.User.Claims.Where(a => a.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Select(c => c.Value).FirstOrDefault();
+        foreach (var item in participantes)
+        {
+            var registro = _DbContext.Registro.FirstOrDefault(p => p.ParticipanteId == item.Id && p.EventoId == Evento.Id);
+            if (registro != null)
+            {
+                var ob = new RegistrosViewModel
+                    {
+                        NombreParticipante = item.Nombre,
+                        HoraDeRegistro = registro.HoraDeRegistro,
+                        Email = item.Email,
+                        Id = registro.Id
+                    };
+                ParticipantesRegistrados.Add(ob);
+            }
+        }
+
+    }
+
+    private async Task EliminarRegistro(RegistrosViewModel Registro)
+    {
+        var registro = _DbContext.Registro.FirstOrDefault(p => p.Id == Registro.Id);
+        _DbContext.Registro.Remove(registro);
+        Evento.Cupo = Evento.Cupo + 1;
+        _DbContext.Evento.Update(Evento);
+        await _DbContext.SaveChangesAsync();
+
+        var participantes = _DbContext.Participante.ToList();
+        ParticipantesRegistrados = new List<RegistrosViewModel>
+            ();
+        foreach (var item in participantes)
+        {
+            var registro1 = _DbContext.Registro.FirstOrDefault(p => p.ParticipanteId == item.Id && p.EventoId == Evento.Id);
+            if (registro1 != null)
+            {
+                var ob = new RegistrosViewModel
+                    {
+                        NombreParticipante = item.Nombre,
+                        HoraDeRegistro = registro1.HoraDeRegistro,
+                        Email = item.Email,
+                        Id = registro1.Id
+                    };
+                ParticipantesRegistrados.Add(ob);
+            }
+        }
+        StateHasChanged();
+    }
+
+                        }

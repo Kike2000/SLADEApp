@@ -1,0 +1,183 @@
+﻿@page "/Perfil/{id}"
+@attribute [Microsoft.AspNetCore.Authorization.Authorize]
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider _Auth
+@inject ApplicationDbContext _DbContext
+@inject NavigationManager _NavigationManager
+@inject UserManager<IdentityUser> _userManager
+@layout MainLayout
+
+<PageTitle>Perfil</PageTitle>
+<AuthorizeView Roles="Administrator">
+    <MudPaper>
+        <MudTabs Elevation="1" Rounded="true" PanelClass="mt-6">
+            <MudTabPanel Text="General">
+                <MudGrid Class="pa-7">
+                    <MudItem xs="12" sm="4" md="3">
+                        <MudCard>
+                            <MudCardHeader>
+                                <CardHeaderContent>
+                                    <MudText>Perfil</MudText>
+                                </CardHeaderContent>
+                            </MudCardHeader>
+                            <MudCardContent>
+                                <div class="d-flex justify-center mb-4">
+                                    <MudIcon Style="height:100px; width:100px;" Icon="@Icons.Filled.Person" />
+                                </div>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                    <MudItem xs="12" sm="8" md="9">
+                        <MudCard>
+                            <MudCardHeader>
+                                <CardHeaderContent>
+                                    <MudText>Detalles</MudText>
+                                </CardHeaderContent>
+                            </MudCardHeader>
+                            <MudCardContent>
+                                <MudGrid>
+                                    <MudItem xs="12" md="12">
+                                        <MudTextField @bind-Value="@User.Email" Label="Email" Variant="Variant.Outlined" Required="true" RequiredError="El Email es Requerido" />
+                                    </MudItem>
+                                    @if (Id == "NuevoUsuario")
+                                    {
+                                        <MudItem xs="12" md="12">
+                                            <MudSelect T="string" Label="Rol del Usuario" @bind-Value="Rol" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter" Required="true" RequiredError="El Role es Requerido">
+                                                @foreach (var item in Roles)
+                                                {
+                                                    <MudSelectItem Value="@(item)">@item</MudSelectItem>
+                                                }
+                                            </MudSelect>
+                                        </MudItem>
+                                    }
+                                    @if (Rol == "User")
+                                    {
+                                        <MudItem xs="12" md="12">
+                                            <MudTextField @bind-Value="@Participante.Nombre" Label="Nombre" Variant="Variant.Outlined" />
+                                        </MudItem>
+                                    }
+                                    @if (Rol == "User")
+                                    {
+                                        <MudItem xs="12" md="12">
+                                            <MudTextField @bind-Value="@Participante.Institucion" Label="Institución" Variant="Variant.Outlined" />
+                                        </MudItem>
+                                        <MudItem xs="12" md="12">
+                                            <MudTextField @bind-Value="@Participante.Procedencia" Label="Procedencia" Variant="Variant.Outlined" />
+                                        </MudItem>
+                                    }
+                                    <MudItem xs="12" md="6">
+                                        <MudTextField @bind-Value="@User.PhoneNumber" Label="Teléfono" Variant="Variant.Outlined" />
+                                    </MudItem>
+                                </MudGrid>
+                            </MudCardContent>
+                            <MudCardActions Class="pb-4 pl-4">
+                                @if (Id != "NuevoUsuario")
+                                {
+                                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="ml-auto" OnClick="ActualizarInfo">Guardar</MudButton>
+                                }
+                                else
+                                {
+                                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="ml-auto" OnClick="RegistrarUsuario">Guardar</MudButton>
+                                }
+                            </MudCardActions>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+            </MudTabPanel>
+        </MudTabs>
+    </MudPaper>
+</AuthorizeView>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public IdentityUser User { get; set; }
+    public Participante Participante { get; set; }
+    public List<string> Roles { get; set; }
+    public string Rol { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        if (Id != "NuevoUsuario")
+        {
+            User = _DbContext.Users.FirstOrDefault(p => p.Id == Id);
+            Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == User.Email);
+            if (Participante != null)
+            {
+                Rol = "User";
+            }
+            else
+            {
+                Rol = "Administrator";
+            }
+        }
+        else
+        {
+            User = new IdentityUser();
+            Participante = new Participante();
+            Roles = _DbContext.Roles.Select(p => p.Name).ToList();
+        }
+    }
+
+    public async Task ActualizarInfo()
+    {
+        User.NormalizedUserName = User.Email.ToUpper();
+        User.NormalizedEmail = User.Email.ToUpper();
+        _DbContext.Users.Update(User);
+        if (Participante != null)
+        {
+            _DbContext.Participante.Update(Participante);
+        }
+        await _DbContext.SaveChangesAsync();
+        Snackbar.Add("Información Actualizada", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        if (Participante == null)
+        {
+            _NavigationManager.NavigateTo("/Administradores");
+        }
+        else
+        {
+
+            _NavigationManager.NavigateTo("/Participantes");
+        }
+    }
+    public async Task RegistrarUsuario()
+    {
+        CrearUsuarioModel crearUsuarioModel = new CrearUsuarioModel(_DbContext, _userManager);
+        string resultado = "";
+        User.NormalizedUserName = User.Email.ToUpper();
+        User.NormalizedEmail = User.Email.ToUpper();
+        User.UserName = User.Email;
+        if (!_DbContext.Users.Any(p => p.Email == User.Email))
+        {
+            if (Rol == "User")
+            {
+                if (Participante.Nombre == null)
+                {
+                    Snackbar.Add("Agregué el nombre del usuario", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+                }
+                else
+                {
+                    Participante.Email = User.Email;
+                    resultado = await crearUsuarioModel.OnPostAsync(Rol, User, Participante);
+
+                    Snackbar.Add(resultado, Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+                    _NavigationManager.NavigateTo("/Participantes");
+
+
+                }
+            }
+            else
+            {
+                resultado = await crearUsuarioModel.OnPostAsync(Rol, User, null);
+
+                Snackbar.Add(resultado, Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+                _NavigationManager.NavigateTo("/Administradores");
+
+            }
+        }
+        else
+        {
+            Snackbar.Add("Correo ya registrado en el sistema", Severity.Warning, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+
+    }
+}

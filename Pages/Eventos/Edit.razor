@@ -1,0 +1,139 @@
+﻿@page "/Eventos/Editar/{Id}"
+@using Microsoft.AspNetCore.Identity
+@using QRCoder;
+@using System.Drawing;
+@using System.Drawing.Imaging;
+@using System.IO;
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+
+<PageTitle>Editar Conferencia - SLADE</PageTitle>
+
+<AuthorizeView Roles="Administrator">
+    <MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Editar Conferencia</MudText>
+    <br />
+    @if (Evento.AgendaAbierta == false)
+    {
+        <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="ReabrirOCerrar">Reabrir Registros a Conferencia</MudButton>
+    }
+    else
+    {
+        <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="ReabrirOCerrar">Cerrar Registros a Conferencia</MudButton>
+    }
+    <br />
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid Class="">
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Nombre:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTextField @bind-Value="@Evento.Nombre" Label="Nombre" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Descripción:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTextField @bind-Value="@Evento.Descripcion" Label="Descripción" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Día de Inicio:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTextField @bind-Value="DiaInicio" T="DateTime?" Format="yyyy-MM-dd" InputType="InputType.Date" Variant="Variant.Outlined" Margin="Margin.Dense" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Hora de Inicio:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTimePicker @bind-Time="TiempoInicio" AmPm="true" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Día de Término:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTextField @bind-Value="DiaFinal" T="DateTime?" Format="yyyy-MM-dd" InputType="InputType.Date" Variant="Variant.Outlined" Margin="Margin.Dense" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Hora de Término:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTimePicker @bind-Time="TiempoTermino" AmPm="true" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Cupo:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudTextField @bind-Value="@Evento.Cupo" Label="Descripción" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Area:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8">
+                        <MudSelect T="string" Label="Lugar de la conferencia" @bind-Value="AreaId" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter" Required="true" RequiredError="El area es requida">
+                            @foreach (var item in _DbContext.Area.ToList())
+                            {
+                                <MudSelectItem Value="@(item.Id.ToString())">@item.Nombre</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" sm="12" md="9"></MudItem>
+                    <MudItem xs="12" sm="12" md="3">
+                        <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="EditarLugar">Guardar</MudButton>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</AuthorizeView>
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public Evento Evento { get; set; }
+    public string AreaId { get; set; }
+    public DateTime? DiaInicio { get; set; }
+    public DateTime? DiaFinal { get; set; }
+    TimeSpan? TiempoInicio = new TimeSpan(00, 45, 00);
+    TimeSpan? TiempoTermino = new TimeSpan(00, 45, 00);
+
+    protected override async Task OnInitializedAsync()
+    {
+        DateTime date1 = new DateTime(2008, 6, 1, 7, 47, 0);
+
+        Evento = _DbContext.Evento.FirstOrDefault(p => p.Id == Guid.Parse(Id));
+        DiaInicio = new DateTime(Evento.HoraInicio.Value.Year, Evento.HoraInicio.Value.Month, Evento.HoraInicio.Value.Day, 0, 0, 0);
+        DiaFinal = new DateTime(Evento.HoraTermino.Value.Year, Evento.HoraTermino.Value.Month, Evento.HoraTermino.Value.Day, 0, 0, 0);
+        var hour = Evento.HoraInicio.Value.Hour;
+        var minutes = Evento.HoraInicio.Value.Minute;
+        var seconds = Evento.HoraInicio.Value.Second;
+        TiempoInicio = new TimeSpan(hour, minutes, seconds);
+        hour = Evento.HoraTermino.Value.Hour;
+        minutes = Evento.HoraTermino.Value.Minute;
+        seconds = Evento.HoraTermino.Value.Second;
+        TiempoTermino = new TimeSpan(hour, minutes, seconds);
+        AreaId = Evento.AreaId.ToString();
+    }
+    private async Task EditarLugar()
+    {
+        DiaInicio = DiaInicio.Value.AddHours(TiempoInicio.Value.Hours).AddMinutes(TiempoInicio.Value.Minutes).ToUniversalTime();
+        DiaFinal = DiaFinal.Value.AddHours(TiempoTermino.Value.Hours).AddMinutes(TiempoTermino.Value.Minutes).ToUniversalTime();
+        Evento.AreaId = Guid.Parse(AreaId);
+        Evento.HoraInicio = DiaInicio;
+        Evento.HoraTermino = DiaFinal;
+        _DbContext.Evento.Update(Evento);
+        try
+        {
+            _DbContext.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+
+        }
+        Snackbar.Add("Evento Editado", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        _NavigationManager.NavigateTo("/Eventos");
+    }
+    private async Task ReabrirOCerrar()
+    {
+        if (Evento.AgendaAbierta == true)
+        {
+            Evento.AgendaAbierta = false;
+            Snackbar.Add("Agenda Cerrada", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+        else
+        {
+            Evento.AgendaAbierta = true;
+            Snackbar.Add("Agenda Abierta", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+        _DbContext.Evento.Update(Evento);
+        _DbContext.SaveChanges();
+    }
+}

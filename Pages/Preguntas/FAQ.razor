@@ -1,0 +1,36 @@
+﻿@page "/FAQ"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>FAQ - SLADE</PageTitle>
+<MudGrid>
+    <MudItem xs="12" xl="12" md="12">
+        <MudText Typo="Typo.h5" Color="MudBlazor.Color.Dark">Preguntas Frecuentes</MudText>
+        <MudExpansionPanels MultiExpansion="true">
+            <MudExpansionPanel Text="¿Cuáles son las fechas previstas del Congreso SLADE en la edición XXXV?" Class="mt-3">
+                <MudText>El congreso se llevará a cabo los días 27, 28 y 29 de octubre de 2022 en el hotel Fiesta Americana Puerto Vallarta All Inclusive & SPA en la ciudad de Puerto Vallarta, Jalisco, México.</MudText>
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="¿Cómo me registro a una conferencia?" Class="mt-3">
+                <MudText>1. Diríjase al apartado de <b>Agenda del Congreso</b>.</MudText>
+                <MudText>2. Seleccione una conferencia.</MudText>
+                <MudText>3. Se mostrarán los detalles de la conferencia.</MudText>
+                <MudText>4. En la parte inferior de la página, se encuentra un botón, al dar click, el Status de su registro se actualizará. </MudText>
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="¿Por qué cuando intento registrarme a una conferencia no se muestra el botón de registro en los detalles de la conferencia?" Class="mt-3">
+                <MudText>Porque dentro de su agenda, existe un registro que se realizará el mismo día a la misma hora.</MudText>
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="¿Cómo sé que me he registrado correctamente a un evento?" Class="mt-3">
+                <MudText>En la aplicación dentro detalles de la conferencia el Status de la conferencia se mostrará como "Registro Exitoso.".</MudText>
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="¿Cómo usaré el código QR de mi registro a una conferencia?" Class="mt-3">
+                <MudText>Deberá presentarse el día y a la hora de la conferencia con su código QR que se encuentra en apartado de Mi Agenda, en la entrada del lugar habrá una persona validando el código QR(se recomienda llegar 15 minutos antes del comienzo de la conferencia).</MudText>
+            </MudExpansionPanel>
+            <MudExpansionPanel Text="¿Qué pasa si llego tarde a una conferencia donde tengo un registro?" Class="mt-3">
+                <MudText>Se dará un tiempo límite de 15 minutos, dependiendo de la demanda de asistencia a la conferencia, podría perder su registro a la conferencia.</MudText>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudItem>
+</MudGrid>
+
+@code {
+
+}

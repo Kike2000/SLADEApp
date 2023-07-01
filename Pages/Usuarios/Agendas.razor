@@ -1,0 +1,87 @@
+﻿@page "/Agendas"
+@using Microsoft.AspNetCore.Identity
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+
+<PageTitle>Agendas - SLADE</PageTitle>
+<MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Agendas</MudText>
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudTable T="Model.Participante" Items="@Participantes.OrderBy(p=>p.Nombre)" Hover="true" Breakpoint="Breakpoint.Sm">
+                            <ToolBarContent>
+                                <MudSpacer />
+                                <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Buscar" Adornment="Adornment.Start"
+                                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh>Nombre</MudTh>
+                                <MudTh>Email</MudTh>
+                                <MudTh>Institución</MudTh>
+                                <MudTh></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
+                                <MudTd DataLabel="Email">@context.Email</MudTd>
+                                <MudTd DataLabel="Rol">@context.Institucion</MudTd>
+                                <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>EditarAgendaUsuario(context)" Color="Color.Primary">Editar Agenda</MudButton></MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    public Evento Evento { get; set; }
+    public Area Area { get; set; }
+    private string searchString = null;
+
+
+    private void OnSearch(string text)
+    {
+        IEnumerable<Model.Participante> data = Participantes;
+        searchString = text;
+        data = data.Where(element =>
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return false;
+            if (element.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            if (element.Nombre.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            return false;
+        }).ToArray();
+        if (data.Count() == 0)
+        {
+            var users = _DbContext.Users.ToList();
+            Participantes = _DbContext.Participante.ToList();
+        }
+        else
+        {
+            Participantes = data.ToList();
+        }
+        StateHasChanged();
+    }
+    public List<Participante>? Participantes { get; set; }
+    public string Rol{ get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        Participantes =  _DbContext.Participante.ToList();
+        Rol = "Administrator";
+    }
+
+    private void EditarAgendaUsuario(Participante participante)
+    {
+        _NavigationManager.NavigateTo($"/Agenda/{participante.Id}/{Rol}");
+    }
+
+}

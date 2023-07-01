@@ -1,0 +1,39 @@
+﻿@namespace CongresoServer.Pages.Eventos
+
+<MudForm @ref="form">
+    <MudDialog>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="12" xl="12" md="12">
+                    <MudTextField @bind-Value="UserName" T="string" InputType="InputType.Text" Variant="Variant.Outlined" Margin="Margin.Dense" />
+                    @if (NoNombre)
+                    {
+                        <MudText Color="Color.Error" Typo="Typo.subtitle1">Digite su nombre</MudText>
+                    }
+                    <br />
+                    <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="Registrarse">Agregar</MudButton>
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+    </MudDialog>
+</MudForm>
+@code {
+    public string UserName { get; set; }
+    public bool NoNombre { get; set; } = false;
+    public Model.Participante Participante { get; set; }
+    MudForm form;
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    public async Task Registrarse()
+    {
+        if (UserName.Length != 0)
+        {
+            MudDialog.Close(DialogResult.Ok(UserName));
+            NoNombre = false;
+        }
+        else
+        {
+            NoNombre = true;
+        }
+
+    }
+}

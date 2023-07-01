@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Remove="Pages\Reportes\Graficas.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AE.Net.Mail" Version="1.7.10" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.13.1" />
+		<PackageReference Include="ClosedXML.Report" Version="0.2.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Azure.SignalR" Version="1.18.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="MudBlazor" Version="6.0.14" />
+		<PackageReference Include="MudBlazor.ThemeManager" Version="1.0.7" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+		<PackageReference Include="QRCoderNetCore" Version="1.0.0" />
+		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Pages\Reportes\Graficas.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Pages\Reportes\Graficas.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Pages\Reportes\Graficas.razor" />
+	</ItemGroup>
+
+</Project>

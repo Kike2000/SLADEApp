@@ -1,0 +1,23 @@
+﻿@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject ApplicationDbContext _DbContext
+
+@code {
+    [Parameter] public string Class { get; set; }
+    [Parameter] public string Style { get; set; }
+    public Participante Participante{ get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        //var user = authState.User.Identity.Name;
+        //Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == user);
+        //if (Participante == null)
+        //{
+        //    Participante = new Participante
+        //    {
+        //        Nombre= user
+        //    };
+        //}
+        StateHasChanged();
+    }
+
+}

@@ -1,0 +1,79 @@
+﻿@page "/EventosAsistidos"
+@using ClosedXML.Excel
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager;
+@inject IJSRuntime js
+<PageTitle>Eventos Asistidos - SLADE</PageTitle>
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudTable T="Model.RegistrosViewModel" Items="@RegistrosVM" Hover="true" Breakpoint="Breakpoint.Sm">
+            <HeaderContent>
+                <MudTh>Nombre</MudTh>
+                <MudTh>Email</MudTh>
+                <MudTh>Hora de Registro</MudTh>
+                <MudTh>Total: @RegistrosVM.Count</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Nombre">@context.NombreParticipante</MudTd>
+                <MudTd DataLabel="Email">@context.Email</MudTd>
+                <MudTd DataLabel="Hora de Registro">@context.HoraDeRegistro</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    </MudItem>
+</MudGrid>
+
+
+@code {
+    public List<Model.Evento> MisEventos { get; set; }
+    public Model.Evento EventoSeleccionado { get; set; }
+    public List<Model.RegistrosViewModel> RegistrosVM { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        RegistrosVM = new List<RegistrosViewModel>();
+        Series = new List<MudBlazor.ChartSeries>();
+        MisEventos = new List<Evento>();
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var current = authstate.User.Identity.Name;
+        var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        var registros = _DbContext.Registro.Where(p => p.ParticipanteId == participante.Id).ToList();
+        foreach (var item in registros)
+        {
+            var evento = _DbContext.Evento.FirstOrDefault(p => p.Id == item.EventoId);
+            MisEventos.Add(evento);
+        }
+
+        base.OnInitialized();
+    }
+
+
+    private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
+
+    public List<MudBlazor.ChartSeries> Series { get; set; }
+    public string[] XAxisLabels = { "Eventos con más visitas" };
+
+
+    protected void Enviar()
+    {
+        RegistrosVM = new List<RegistrosViewModel>();
+        var registros = _DbContext.Registro.Where(p => p.EventoId == EventoSeleccionado.Id && p.Asistencia).ToList();
+        foreach (var registro in registros)
+        {
+            var participante = _DbContext.Participante.FirstOrDefault(p => p.Id == registro.ParticipanteId);
+            var registroVM = new RegistrosViewModel
+                {
+                    Email = participante.Email,
+                    NombreParticipante = participante.Nombre,
+                    HoraDeRegistro = registro.HoraDeRegistro,
+                    NombreEvento = EventoSeleccionado.Nombre
+                };
+            RegistrosVM.Add(registroVM);
+        }
+    }
+
+}

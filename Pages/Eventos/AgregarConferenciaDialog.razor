@@ -1,0 +1,97 @@
+﻿@namespace CongresoServer.Pages.Eventos
+
+@inject ApplicationDbContext _DbContext
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject NavigationManager _NavigationManager
+@inject UserManager<IdentityUser> _userManager
+<MudForm @ref="form">
+    <MudDialog>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="12" xl="12" md="12">
+                    <MudSelect T="Model.Evento" Label="Selecciona Una Conferencia" @bind-Value="@EventoSeleccionado" Variant="Variant.Filled" AnchorOrigin="Origin.BottomCenter" Required=true RequiredError="Seleccione una opción">
+                        @foreach (var item in EventosDisponibles.Distinct().ToList())
+                        {
+                            <MudSelectItem T="Model.Evento" Value="@(item)">@item.Nombre</MudSelectItem>
+                        }
+                    </MudSelect>
+                    <br />
+                    <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="Registrarse">Agregar</MudButton>
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+    </MudDialog>
+</MudForm>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public List<Model.Evento> EventosRegistrados { get; set; }
+    public List<Model.Evento> EventosDisponibles { get; set; }
+    public List<Model.Evento> EventosNoRegistrados { get; set; }
+    public Model.Evento EventoSeleccionado { get; set; }
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    public Model.Participante Participante { get; set; }
+    MudForm form;
+
+    protected override async Task OnInitializedAsync()
+    {
+        EventosRegistrados = new List<Evento>();
+        EventosNoRegistrados = new List<Evento>();
+        EventosDisponibles = new List<Evento>();
+        Participante = _DbContext.Participante.FirstOrDefault(p => p.Id == Guid.Parse(Id));
+        var registros = _DbContext.Registro.Where(p => p.ParticipanteId == Participante.Id).ToList();
+        var todoEventos = _DbContext.Evento.ToList();
+        foreach (var registroEvento in registros)
+        {
+            var evento = _DbContext.Evento.FirstOrDefault(p => p.Id == registroEvento.EventoId);
+            EventosRegistrados.Add(evento);
+        }
+
+        foreach (var item in _DbContext.Evento.ToList())
+        {
+            var evento = _DbContext.Evento.FirstOrDefault(p => p.Id == item.Id);
+            if (!EventosRegistrados.Any(p => p.Id == item.Id))
+            {
+                EventosNoRegistrados.Add(item);
+            }
+        }
+
+        foreach (var item2 in EventosNoRegistrados)
+        {
+            if (!EventosRegistrados.Any(p => p.HoraInicio >= item2.HoraInicio && p.HoraInicio <= item2.HoraTermino))
+            {
+                var test = _DbContext.Evento.FirstOrDefault(p=>p.Nombre.Contains("Taller 2"));
+                EventosDisponibles.Add(item2);
+            }
+        }
+
+
+    }
+    public async Task Registrarse()
+    {
+        await form.Validate();
+        if (form.IsValid)
+        {
+            if (EventoSeleccionado.Cupo > 0)
+            {
+                var registro = new Model.Registro
+                    {
+                        Asistencia = false,
+                        ParticipanteId = Participante.Id,
+                        EventoId = EventoSeleccionado.Id,
+                        HoraDeRegistro = DateTime.Now.ToUniversalTime()
+                    };
+                EventoSeleccionado.Cupo = EventoSeleccionado.Cupo - 1;
+                _DbContext.Registro.Add(registro);
+                _DbContext.Evento.Update(EventoSeleccionado);
+                await _DbContext.SaveChangesAsync();
+                MudDialog.Close(DialogResult.Ok(true));
+            }
+            else
+            {
+                MudDialog.Cancel();
+            }
+        }
+
+    }
+}

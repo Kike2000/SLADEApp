@@ -1,0 +1,54 @@
+﻿@namespace CongresoServer.Pages.Eventos
+
+@inject ApplicationDbContext _DbContext
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject NavigationManager _NavigationManager
+@inject UserManager<IdentityUser> _userManager
+
+<MudDialog>
+    <DialogContent>
+        <MudGrid>
+            <MudItem xs="12" xl="12" md="12">
+                <MudTable Dense="true" Items="@MisEventos" Hover="true" Breakpoint="Breakpoint.Sm">
+                    <HeaderContent>
+                        <MudTh>Nombre</MudTh>
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd DataLabel="Lead Name">@context.Nombre</MudTd>
+                    </RowTemplate>
+                    <NoRecordsContent>
+                        <MudText>No hay registros de asistencias a conferencia.</MudText>
+                    </NoRecordsContent>
+                    <PagerContent>
+                        <MudTablePager HideRowsPerPage=true />
+                    </PagerContent>
+                </MudTable>
+            </MudItem>
+        </MudGrid>
+    </DialogContent>
+</MudDialog>
+
+
+@code {
+    public List<Model.Evento> MisEventos { get; set; }
+    public Model.Evento EventoSeleccionado { get; set; }
+    public List<Model.RegistrosViewModel> RegistrosVM { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        RegistrosVM = new List<RegistrosViewModel>();
+        MisEventos = new List<Evento>();
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var current = authstate.User.Identity.Name;
+        var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        var registros = _DbContext.Registro.Where(p => p.ParticipanteId == participante.Id && p.Asistencia).ToList();
+        foreach (var item in registros)
+        {
+            var evento = _DbContext.Evento.FirstOrDefault(p => p.Id == item.EventoId);
+            MisEventos.Add(evento);
+        }
+
+        base.OnInitialized();
+    }
+
+
+}

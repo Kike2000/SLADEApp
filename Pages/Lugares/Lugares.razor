@@ -1,0 +1,53 @@
+﻿@page "/Lugares"
+@using Microsoft.AspNetCore.Identity
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+
+<PageTitle>Lugares - SLADE</PageTitle>
+<MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Lugares</MudText>
+<MudGrid>
+    <MudItem xs="8" sm="8" md="9">
+
+    </MudItem>
+    <MudItem xs="4" sm="4" md="3">
+        <MudButton Variant="Variant.Filled" OnClick="RegistrarNuevoEvento" Color="Color.Success">Registrar Lugar</MudButton>
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudTable T="Model.Area" Items="@Lugar.OrderBy(p=>p.Nombre)" Hover="true" Breakpoint="Breakpoint.Sm">
+                            <HeaderContent>
+                                <MudTh>Nombre</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Nombre"><MudLink Href="@($"/Lugares/Editar/{@context.Id}")">@context.Nombre</MudLink></MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    public List<Area> Lugar { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Lugar = _DbContext.Area.ToList();
+    }
+
+    private void RegistrarNuevoEvento()
+    {
+        _NavigationManager.NavigateTo($"/Lugares/Crear");
+    }
+
+}

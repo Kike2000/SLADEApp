@@ -1,0 +1,407 @@
+﻿@page "/MiAgenda"
+@page "/Agenda/{Id}/{Rol}"
+@using CongresoServer.Model
+@using QRCoder
+@using System.Drawing
+@using System.Drawing.Imaging
+@inject ApplicationDbContext _DbContext
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject NavigationManager _NavigationManager
+@inject UserManager<IdentityUser> _userManager
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+<PageTitle>Mi Agenda - SLADE</PageTitle>
+<br />
+@if (Rol != "Administrator")
+{
+        <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Warning" Class="ml-auto" OnClick="()=>VerAsistencias(maxWidth)">Ver Asistencias a Conferencias</MudButton>
+    <br />
+    <br />
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="9">
+            <MudCard Style="height:100%;border-color:#4fa79f; border-width: thin;">
+                <MudCardHeader Style="background-color:#4fa79f">
+                    <CardHeaderContent>
+                        <div class="d-flex justify-center">
+                            @if (Id == null)
+                            {
+                                <MudText Typo="Typo.h4" Color="MudBlazor.Color.Dark"><b>Mi Agenda al Congreso Slade - @Participante.Nombre</b></MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.h5" Color="MudBlazor.Color.Dark" Class="mb-4">Agenda de @Participante.Nombre al Congreso Slade</MudText>
+                            }
+                        </div>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent Class="px-0 ml-2">
+                    <MudTreeView T="string">
+                        <MudText Class="ml-3" Typo="Typo.h5">Día 1: Jueves 27 de octubre de 2022</MudText>
+                        <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                            @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <br />
+                    <MudText Class="ml-1" Typo="Typo.h5">Día 2: Viernes 28 de octubre de 2022</MudText>
+                    <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <br />
+                    <MudText Class="ml-1" Typo="Typo.h5">Día 3: Sábado 29 de octubre de 2022</MudText>
+                    <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+
+                </MudTreeView>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="12" md="3">
+        <MudCard Style="border-color:#4fa79f; border-width: thin;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudImage Fluid="true" Src="@QRCodeSr"></MudImage>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+}
+else
+{
+    <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Warning" Class="ml-auto" OnClick="()=>AgregarEvento(maxWidth)">Agregar Conferencia</MudButton>
+    <br />
+    <br />
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="9">
+            <MudCard Style="height:100%;">
+                <MudCardContent Class="px-0 ml-2">
+                    <MudTreeView T="string">
+                        <MudText Class="ml-3" Typo="Typo.h5">Día 1: Jueves 27 de octubre de 2022</MudText>
+                        <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                            @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <br />
+                    <MudText Class="ml-1" Typo="Typo.h5">Día 2: Viernes 28 de octubre de 2022</MudText>
+                    <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <br />
+                    <MudText Class="ml-1" Typo="Typo.h5">Día 3: Sábado 29 de octubre de 2022</MudText>
+                    <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                    <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                        @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            {
+                            <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoAdministradorEvento(item.Id.ToString())" Value="@item.Texto" />
+                            }
+                    </MudTreeViewItem>
+                </MudTreeView>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="12" md="3">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudImage Fluid="true" Src="@QRCodeSr"></MudImage>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+}
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    [Parameter]
+    public string Rol { get; set; }
+    public List<Evento> Eventos { get; set; }
+    public List<Registro> Registros { get; set; }
+    public Model.Participante Participante { get; set; }
+    public List<EventoViewModel> EventoVMDia1 { get; set; }
+    public List<EventoViewModel> EventoVMDia2 { get; set; }
+    public List<EventoViewModel> EventoVMDia3 { get; set; }
+    private TreeItemData ActivatedValue { get; set; }
+    public string QRCodeSr { get; set; }
+    private HashSet<TreeItemData> SelectedValues { get; set; }
+    DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Large, FullWidth = true };
+    private HashSet<TreeItemData> TreeItems { get; set; } = new HashSet<TreeItemData>();
+
+    public class TreeItemData
+    {
+        public string Title { get; set; }
+
+        public string Icon { get; set; }
+
+        public int? Number { get; set; }
+
+        public bool IsExpanded { get; set; }
+
+        public HashSet<TreeItemData> TreeItems { get; set; }
+
+        public TreeItemData(string title, string icon, int? number = null)
+        {
+            Title = title;
+            Icon = icon;
+            Number = number;
+        }
+    }
+    public void InfoEvento(string e)
+    {
+        _NavigationManager.NavigateTo($"/Eventos/Detalles/{e}", forceLoad: true);
+    }
+    public void InfoAdministradorEvento(string e)
+    {
+        _NavigationManager.NavigateTo($"/Administrador/Eventos/Detalles/{e}", forceLoad: true);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        EventoVMDia1 = new List<EventoViewModel>();
+        EventoVMDia2 = new List<EventoViewModel>();
+        EventoVMDia3 = new List<EventoViewModel>();
+        var eventos = new List<Evento>();
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var current = authstate.User.Identity.Name;
+        //Modificar el current
+        if (Id != null)
+        {
+            Participante = _DbContext.Participante.FirstOrDefault(p => p.Id == Guid.Parse(Id));
+        }
+        else
+        {
+            Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        }
+        var rol = authstate.User.Claims.Where(a => a.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Select(c => c.Value).FirstOrDefault();
+        if (Id != null && rol == "User")
+        {
+            Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        }
+        using (MemoryStream ms = new MemoryStream())
+        {
+            QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+            QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(Participante.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
+            QRCode qRCode = new QRCode(qRCodeData);
+            using (Bitmap bit = qRCode.GetGraphic(20))
+            {
+                bit.Save(ms, ImageFormat.Png);
+                QRCodeSr = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+            }
+        }
+
+        var registros = _DbContext.Registro.Where(p => p.ParticipanteId == Participante.Id).ToList();
+        var eventosSinRegistroDeParticipante = _DbContext.Evento.ToList();
+        foreach (var item in eventosSinRegistroDeParticipante)
+        {
+            if (registros.Any(p => p.EventoId == item.Id))
+            {
+                eventos.Add(item);
+            }
+        }
+        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(27) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        {
+            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+            var eventoDia1 = new EventoViewModel
+                {
+                    Nombre = item.Nombre,
+                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+                    Lugar = area.Nombre,
+                    Id = item.Id
+                };
+            eventoDia1.BackgroundColor = "#F2BC40";
+
+            EventoVMDia1.Add(eventoDia1);
+        }
+        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(28) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        {
+            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+            var eventoDia2 = new EventoViewModel
+                {
+                    Nombre = item.Nombre,
+                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+                    Lugar = area.Nombre,
+                    Id = item.Id
+                };
+
+            eventoDia2.BackgroundColor = "#F2BC40";
+            EventoVMDia2.Add(eventoDia2);
+        }
+        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(29) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        {
+            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+            var eventoDia3 = new EventoViewModel
+                {
+                    Nombre = item.Nombre,
+                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+                    Lugar = area.Nombre,
+                    Id = item.Id
+                };
+            eventoDia3.BackgroundColor = "#F2BC40";
+            EventoVMDia3.Add(eventoDia3);
+        }
+
+
+    }
+    private async Task AgregarEvento(DialogOptions options)
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("Id", Id.ToString());
+        var result = DialogService.Show<AgregarConferenciaDialog>("Agregar Conferencia", parameters, options);
+        var final = await result.Result;
+        if (!final.Cancelled)
+        {
+            Snackbar.Add("Conferencia Agregada Correctamente", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+        else
+        {
+            Snackbar.Add("Conferencia No agregada", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+    }
+    private async Task VerAsistencias(DialogOptions options)
+    {
+        var parameters = new DialogParameters();
+        var result = DialogService.Show<ConferenciasAsistidasDialog>("Conferencias Asistidas", parameters, options);
+        var final = await result.Result;
+    }
+    EarningReport[] earningReports = new EarningReport[]
+    {
+        new EarningReport { Name = "Lunees", Title = "Reactor Engineer", Avatar = "https://avatars2.githubusercontent.com/u/71094850?s=460&u=66c16f5bb7d27dc751f6759a82a3a070c8c7fe4b&v=4", Salary = "$0.99", Severity = MudBlazor.Color.Success, SeverityTitle = "Low"},
+        new EarningReport { Name = "Mikes-gh", Title = "Developer", Avatar = "https://avatars.githubusercontent.com/u/16208742?s=120&v=4", Salary = "$19.12K", Severity = MudBlazor.Color.Secondary, SeverityTitle = "Medium"},
+        new EarningReport { Name = "Garderoben", Title = "CSS Magician", Avatar = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4", Salary = "$1337", Severity = MudBlazor.Color.Primary, SeverityTitle = "High"},
+    };
+
+    class EarningReport
+    {
+        public string Avatar;
+        public string Name;
+        public string Title;
+        public MudBlazor.Color Severity;
+        public string SeverityTitle;
+        public string Salary;
+    }
+    }

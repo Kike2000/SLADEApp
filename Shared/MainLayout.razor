@@ -1,0 +1,139 @@
+﻿@using MudBlazor.ThemeManager
+@inherits LayoutComponentBase
+@inject NavigationManager _NavigationManager
+@inject ApplicationDbContext _DbContext
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject IJSRuntime JSRuntime
+<style>
+
+    .mud-nav-link:not(.mud-nav-link-disabled) .mud-nav-link-icon.mud-nav-link-icon-default {
+        /*color: white;*/
+    }
+
+    .mud-navmenu.mud-navmenu-default .mud-nav-link.active:not(.mud-nav-link-disabled) {
+        color: #f2b842;
+    }
+
+</style>
+
+<MudThemeProvider Theme="_themeManager.Theme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
+<MudLayout>
+    <MudAppBar Style="background-color: #f2b842; height:68px;background-image:url(../curvas_.png);">
+        @* Style="background-image:url(../testing.png);" >*@
+        <MudHidden Breakpoint="Breakpoint.MdAndUp">
+            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        </MudHidden>
+        <MudHidden Breakpoint="Breakpoint.Xs">
+            <MudImage Src="../logos.png" Style="background-repeat:no-repeat; background-size:cover; height:72px;width:310px;padding-top:7px" />
+        </MudHidden>
+        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+            <MudImage Src="../logos.png" Style="background-repeat:no-repeat; background-size:cover; height:72px;width:220px;padding-top:7px" />
+        </MudHidden>
+        <MudSpacer />
+        <MudHidden Breakpoint="Breakpoint.Xs">
+            <MudImage Src="../elemento_1.png" Style="background-repeat:no-repeat; background-size:cover; height:72px;width:80px;padding-top:5px" />
+        </MudHidden>
+        <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
+            <ActivatorContent>
+                <MudIcon Icon="@Icons.Filled.Person" />
+            </ActivatorContent>
+            <ChildContent>
+                <PersonCard Class="mt-n2" />
+                @if (Current)
+                {
+                    <AuthorizeView Roles="Administrator">
+                        <MudListItem Text="Perfil" Icon="@Icons.Material.Outlined.Person" Href="@($"/Perfil/{@Id}")" />
+                    </AuthorizeView>
+                }
+                <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" OnClick="(()=>Logout())" />
+            </ChildContent>
+        </MudMenu>
+    </MudAppBar>
+    <MudDrawer Style="background-color:#4fa79f" @bind-Open="_drawerOpen" Elevation="_themeManager.DrawerElevation" ClipMode="_themeManager.DrawerClipMode">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        <MudHidden Breakpoint="Breakpoint.SmAndDown">
+            <MudToolBar DisableGutters="true">
+                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Dark" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
+            </MudToolBar>
+        </MudHidden>
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            <div class="d-flex justify-space-between" id="Regresar">
+                <MudText Typo="Typo.h4" Color="MudBlazor.Color.Dark" Class="mb-4"></MudText>
+                <div class="d-flex justify-center">
+                    <MudFab Color="MudBlazor.Color.Tertiary" OnClick="GoBack" Size="MudBlazor.Size.Large" StartIcon="@Icons.Filled.ArrowBack" Label="Regresar" />
+                </div>
+            </div>
+            <br />
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+
+@code {
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme
+        {
+            Theme = new MudBlazorAdminDashboard(),
+            DrawerClipMode = DrawerClipMode.Always,
+            FontFamily = "Montserrat",
+            DefaultBorderRadius = 6,
+            AppBarElevation = 1,
+            DrawerElevation = 1
+        };
+
+    private async void GoBack()
+    {
+        await JSRuntime.InvokeVoidAsync("history.back");
+    }
+    public bool _drawerOpen = true;
+    public bool _themeManagerOpen = false;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    void OpenThemeManager(bool value)
+    {
+        _themeManagerOpen = value;
+    }
+
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
+    public string Id { get; set; }
+    public bool Current { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var user = authState.User.Identity.Name;
+        var CurrentUser = _DbContext.Users.FirstOrDefault(p => p.Email == user);
+        if (CurrentUser != null)
+        {
+            Id = CurrentUser.Id;
+            Current = true;
+        }
+        else
+        {
+            Current = false;
+        }
+        StateHasChanged();
+    }
+    public void Logout()
+    {
+        _NavigationManager.NavigateTo("/Account/LogOut", true);
+    }
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("Personal", href: "#"),
+        new BreadcrumbItem("Dashboard", href: "#"),
+    };
+}

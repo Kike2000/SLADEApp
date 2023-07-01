@@ -1,0 +1,45 @@
+﻿@namespace NexLead.Pages.Admin.Lead
+@using Microsoft.AspNetCore.Mvc.Rendering
+@inject ApplicationDbContext _DbContext
+@inject NavigationManager _NavigationManager
+@inject AuthenticationStateProvider _Auth
+@inject UserManager<IdentityUser> _userManager;
+<MudDialog>
+    <DialogContent>
+        <MudItem xs="12" sm="12">
+            <MudImage Fluid="true" Src="@mesa" Alt="Foto Eventos" Class="rounded-lg" />
+        </MudItem>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cerrar</MudButton>
+    </DialogActions>
+</MudDialog>
+
+
+@code {
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+    [Parameter]
+    public string mesa { get; set; }
+
+    protected override async System.Threading.Tasks.Task OnInitializedAsync()
+    {
+        if (mesa.Contains("1"))
+        {
+            mesa = "./Mesa1.png";
+        }
+        else if (mesa.Contains("2"))
+        {
+            mesa = "./Mesa2.png";
+        }
+        else if (mesa.Contains("3"))
+        {
+            mesa = "./Mesa3.png";
+        }
+        else if (mesa.Contains("4"))
+        {
+            mesa = "./Mesa4.png";
+        }
+    }
+    void Cancel() => MudDialog.Cancel();
+}

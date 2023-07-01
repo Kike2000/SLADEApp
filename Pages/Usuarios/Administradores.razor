@@ -1,0 +1,107 @@
+﻿@page "/Administradores"
+@using Microsoft.AspNetCore.Identity
+@using Npgsql
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+<PageTitle>Administradores - SLADE</PageTitle>
+<MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Administradores</MudText>
+<MudGrid>
+    <MudItem xs="8" sm="8" md="9">
+
+    </MudItem>
+    <MudItem xs="4" sm="4" md="3">
+        <MudButton Variant="Variant.Filled" OnClick="RegistrarNuevoUsuario" Color="Color.Success">Registrar Administrador</MudButton>
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudTable T="Model.UserViewModel" Items="UserVM" Hover="true" Breakpoint="Breakpoint.Sm">
+                            <HeaderContent>
+                                <MudTh>Email</MudTh>
+                                <MudTh>Teléfono</MudTh>
+                                <MudTh></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Email">@context.Email</MudTd>
+                                <MudTd DataLabel="Rol">@context.Rol</MudTd>
+                                <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>EditarRegistroUsuario(context)" Color="Color.Primary">Editar</MudButton></MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    public Evento Evento { get; set; }
+    public Area Area { get; set; }
+    public List<IdentityUser> ParticipantesRegistrados { get; set; }
+    public Guid ParticipanteId { get; set; }
+    public bool ExisteRegistro { get; set; }
+    public Registro Registro { get; set; }
+    public string QRCodeSr { get; set; }
+    private string searchString = null;
+
+    public List<UserViewModel>? UserVM { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserVM = new List<UserViewModel>();
+        var databaseUrl = "postgresql://postgres:lEIF3iOi0Fj9JhyKXh9j@containers-us-west-104.railway.app:7992/railway";
+        var databaseUri = new Uri(databaseUrl);
+        var userInfo = databaseUri.UserInfo.Split(':');
+        var Role = "";
+        var UserId = "";
+        var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = databaseUri.Host,
+                Port = databaseUri.Port,
+                Username = userInfo[0],
+                Password = userInfo[1],
+                Database = databaseUri.LocalPath.TrimStart('/'),
+                SslMode = SslMode.Require,
+                TrustServerCertificate = true
+            };
+        var test2 = builder.ToString();
+        var ParticipanteId = "";
+        using (NpgsqlConnection conn = new NpgsqlConnection(test2))
+        {
+            conn.Open();
+            string query = $"SELECT e.\"Id\", e.\"Email\", e.\"PhoneNumber\" FROM  \"AspNetUsers\" e join \"AspNetUserRoles\" a on e.\"Id\"= a.\"UserId\"  WHERE a.\"RoleId\" = '61ec0838-79e5-4f8d-b10e-0bb9e12ba567'";
+            NpgsqlCommand cmd2 = new NpgsqlCommand(query, conn);
+            NpgsqlDataReader dr = cmd2.ExecuteReader();
+            while (dr.Read())
+            {
+                var item = new UserViewModel
+                    {
+                        Email = dr[1].ToString(),
+                        Rol = dr[2].ToString(),
+                        Id = dr[0].ToString()
+                    };
+
+                UserVM.Add(item);
+            }
+        }
+    }
+
+    private void EditarRegistroUsuario(UserViewModel userVM)
+    {
+        _NavigationManager.NavigateTo($"/Perfil/{userVM.Id}");
+    }
+
+    private void RegistrarNuevoUsuario()
+    {
+        _NavigationManager.NavigateTo($"/Perfil/NuevoUsuario");
+    }
+
+}
+

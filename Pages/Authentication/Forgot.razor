@@ -1,0 +1,40 @@
+﻿@page "/ForgotPassword"
+@layout LoginLayout
+@inject ISnackbar Snackbar
+@inject UserManager<IdentityUser> _userManager;
+@inject NavigationManager _navigationManager
+@inject ApplicationDbContext _DbContext
+
+<MudText Typo="Typo.h4" GutterBottom="true">Forgot Password?</MudText>
+
+<MudText Typo="Typo.subtitle2">Enter the email address linked to your account and you will recieve an email containing a link to reset your password.</MudText>
+
+<MudTextField @bind-Value="Email" T="string" Label="E-mail" Variant="Variant.Outlined" Class="my-4"></MudTextField>
+
+<MudButton OnClick="SendForgotEmail" Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Size="Size.Large" FullWidth="true" Class="mt-3">Reset Password</MudButton>
+
+
+@code {
+    public string Email { get; set; }
+
+    private async Task SendForgotEmail()
+    {
+        //if (Email != null)
+        //{
+        //    Areas.Admin.Pages.Identity.Pages.ForgotPasswordModel forgotPasswordModel = new Areas.Admin.Pages.Identity.Pages.ForgotPasswordModel(_userManager, _DbContext);
+        //    var result = await forgotPasswordModel.OnGet(Email);
+        //    if (result)
+        //    {
+        //        _navigationManager.NavigateTo("/ResetPasswordConfirmation");
+        //    }
+        //    else
+        //    {
+        //        Snackbar.Add("Something happened", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        //    }
+        //}
+        //else
+        //{
+        //    Snackbar.Add("Please, enter your email", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        //}
+    }
+}

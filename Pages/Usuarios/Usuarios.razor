@@ -1,0 +1,170 @@
+﻿@page "/Participantes"
+@using Microsoft.AspNetCore.Identity
+@using Npgsql
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+<PageTitle>Participantes - SLADE</PageTitle>
+<MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Participantes</MudText>
+<MudGrid>
+    <MudItem xs="8" sm="8" md="9">
+
+    </MudItem>
+    <MudItem xs="4" sm="4" md="3">
+        <MudButton Variant="Variant.Filled" OnClick="RegistrarNuevoUsuario" Color="Color.Success">Registrar Participante</MudButton>
+    </MudItem>
+</MudGrid>
+<MudGrid>
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;">
+            <MudCardContent>
+                <MudGrid>
+                    <MudItem xs="12" sm="12" md="12">
+                        <MudTable T="Model.UserViewModel" Items="@UserVM.OrderBy(p=>p.Rol)" Hover="true" Breakpoint="Breakpoint.Sm">
+                            @*                            <ToolBarContent>
+                            <MudSpacer />
+                            <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Buscar" Adornment="Adornment.Start"
+                            AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>*@
+                            <HeaderContent>
+                                <MudTh>Nombre</MudTh>
+                                <MudTh>Email</MudTh>
+                                <MudTh>Procedencia</MudTh>
+                                <MudTh></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Nombre">@context.Nombre</MudTd>
+                                <MudTd DataLabel="Email">@context.Email</MudTd>
+                                <MudTd DataLabel="Rol">@context.Rol</MudTd>
+                                <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>EditarRegistroUsuario(context)" Color="Color.Primary">Editar</MudButton></MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudItem>
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>
+
+@code {
+    public Evento Evento { get; set; }
+    public Area Area { get; set; }
+    public List<RegistrosViewModel> ParticipantesRegistrados { get; set; }
+    public Guid ParticipanteId { get; set; }
+    public bool ExisteRegistro { get; set; }
+    public Registro Registro { get; set; }
+    public string QRCodeSr { get; set; }
+    private string searchString = null;
+
+    //private void OnSearch(string text)
+    //{
+    //    IEnumerable<Model.UserViewModel> data = UserVM;
+    //    searchString = text;
+    //    data = data.Where(element =>
+    //    {
+    //        if (string.IsNullOrWhiteSpace(searchString))
+    //            return false;
+    //        if (element.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+    //            return true;
+    //        if (element.Nombre.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+    //            return true;
+    //        return false;
+    //    }).ToArray();
+    //    if (data.Count() == 0)
+    //    {
+    //        var users = _DbContext.Users.ToList();
+    //        UserVM = new List<UserViewModel>();
+    //        foreach (var user in users)
+    //        {
+    //            var userRole = _DbContext.UserRoles.FirstOrDefault(p => p.UserId == user.Id);
+    //            var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == user.Email);
+    //            if (participante == null) { participante = new Participante(); participante.Nombre = user.Email; }
+    //            var item = new UserViewModel
+    //                {
+    //                    Email = user.Email,
+    //                    Rol = _DbContext.Roles.FirstOrDefault(p => p.Id == userRole.RoleId).Name,
+    //                    Nombre = participante.Nombre,
+    //                    ParticipanteId = participante.Id
+    //                };
+    //            UserVM.Add(item);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        UserVM = data.ToList();
+    //    }
+    //    StateHasChanged();
+    //}
+    public List<UserViewModel>? UserVM { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserVM = new List<UserViewModel>();
+        var Users = _DbContext.Users.ToList();
+        var databaseUrl = "postgresql://postgres:lEIF3iOi0Fj9JhyKXh9j@containers-us-west-104.railway.app:7992/railway";
+        var databaseUri = new Uri(databaseUrl);
+        var userInfo = databaseUri.UserInfo.Split(':');
+        var Role = "";
+        var UserId = "";
+        var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = databaseUri.Host,
+                Port = databaseUri.Port,
+                Username = userInfo[0],
+                Password = userInfo[1],
+                Database = databaseUri.LocalPath.TrimStart('/'),
+                SslMode = SslMode.Require,
+                TrustServerCertificate = true
+            };
+        var test2 = builder.ToString();
+        var ParticipanteId = "";
+        using (NpgsqlConnection conn = new NpgsqlConnection(test2))
+        {
+            conn.Open();
+            string query = $"SELECT e.\"Id\", e.\"Email\", p.\"Procedencia\",p.\"Nombre\", p.\"Id\"  FROM  \"AspNetUsers\" e join \"AspNetUserRoles\" a on e.\"Id\"= a.\"UserId\" join \"Participante\" p on e.\"Email\"= p.\"Email\" WHERE a.\"RoleId\" = 'd0331317-69ae-44bb-9bd8-02fbbd44b8ed' order by p.\"Nombre\" asc";
+            NpgsqlCommand cmd2 = new NpgsqlCommand(query, conn);
+            NpgsqlDataReader dr = cmd2.ExecuteReader();
+            while (dr.Read())
+            {
+                var item = new UserViewModel
+                    {
+                        Email = dr[1].ToString(),
+                        Rol = dr[2].ToString(),
+                        Nombre = dr[3].ToString(),
+                        ParticipanteId = Guid.Parse(dr[4].ToString()),
+                        Id = dr[0].ToString()
+                    };
+
+                UserVM.Add(item);
+            }
+        }
+        //foreach (var user in Users)
+        //{
+        //    var userRole = _DbContext.UserRoles.FirstOrDefault(p => p.UserId == user.Id);
+        //    var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == user.Email);
+        //    if (participante == null) { participante = new Participante(); participante.Nombre = user.Email; }
+        //    var item = new UserViewModel
+        //        {
+        //            Email = user.Email,
+        //            Rol = _DbContext.Roles.FirstOrDefault(p => p.Id == userRole.RoleId).Name,
+        //            Nombre = participante.Nombre,
+        //            ParticipanteId = participante.Id,
+        //            Id = user.Id
+        //        };
+        //    UserVM.Add(item);
+        //}
+    }
+
+    private void EditarRegistroUsuario(UserViewModel userVM)
+    {
+        _NavigationManager.NavigateTo($"/Perfil/{userVM.Id}");
+    }
+
+    private void RegistrarNuevoUsuario()
+    {
+        _NavigationManager.NavigateTo($"/Perfil/NuevoUsuario");
+    }
+
+}

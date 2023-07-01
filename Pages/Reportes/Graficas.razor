@@ -1,0 +1,54 @@
+﻿@page "/Grafica"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using MudBlazor.Charts;
+@using CongresoServer.Model;
+@using ClosedXML.Excel
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager;
+@inject IJSRuntime js
+
+<div>
+    <MudChart ChartType="ChartType.Bar" ChartSeries="@Series" @bind-SelectedIndex="Index" XAxisLabels="@XAxisLabels" Width="100%" Height="350px"></MudChart>
+</div>
+@code {
+    private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
+
+    public List<ChartSeries> Series = new List<ChartSeries>()
+    {
+        new ChartSeries() { Name = "United States", Data = new double[] { 40 } },
+        new ChartSeries() { Name = "Germany", Data = new double[] { 19 } },
+        new ChartSeries() { Name = "Sweden", Data = new double[] { 8 } },
+    };
+    public string[] XAxisLabels = { "Eventos" };
+
+    public class ChartSeries
+    {
+        public string Name { get; set; }
+        public double[] Data { get; set; }
+    }
+    public List<Evento> Eventos { get; set; }
+    public Evento EventoSeleccionado { get; set; }
+    public List<RegistrosViewModel> RegistrosVM { get; set; }
+    protected override void OnInitialized()
+    {
+        RegistrosVM = new List<RegistrosViewModel>();
+        Eventos = _DbContext.Evento.ToList();
+        Series = new List<MudBlazor.ChartSeries>();
+
+        foreach (var item in Eventos)
+        {
+            var chart = new ChartSeries
+                {
+                    Name = item.Nombre,
+                    Data = new double[] { _DbContext.Registro.Where(p => p.EventoId == item.Id).Count() }
+                };
+                Series.Add(chart);
+        }
+
+        base.OnInitialized();
+    }
+
+}

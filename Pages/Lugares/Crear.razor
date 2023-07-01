@@ -1,0 +1,51 @@
+﻿@page "/Lugares/Crear"
+@using Microsoft.AspNetCore.Identity
+@using QRCoder;
+@using System.Drawing;
+@using System.Drawing.Imaging;
+@using System.IO;
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager _NavigationManager
+
+<PageTitle>Agregar Area - SLADE</PageTitle>
+
+<AuthorizeView Roles="Administrator">
+    <MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Agregar Area:</MudText>
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="12">
+            <MudCard Style="height:100%;">
+                <MudCardContent>
+                    <MudGrid Class="px-0 ml-7">
+                        <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h5"><b>Nombre:</b></MudText></MudItem>
+                        <MudItem xs="12" sm="12" md="8">
+                            <MudTextField @bind-Value="@Area.Nombre" Label="Nombre" Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12" sm="12" md="8"></MudItem>
+                        <MudItem xs="12" sm="12" md="4">
+                            <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" Class="ml-auto" OnClick="RegistrarLugar">Guardar</MudButton>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</AuthorizeView>
+
+@code {
+    public Area Area { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Area = new Area();
+    }
+    private async Task RegistrarLugar()
+    {
+        _DbContext.Area.Add(Area);
+        await _DbContext.SaveChangesAsync();
+        Snackbar.Add("Lugar Creado", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        _NavigationManager.NavigateTo("/Lugares");
+    }
+}

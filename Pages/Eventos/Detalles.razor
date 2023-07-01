@@ -1,0 +1,199 @@
+﻿@page "/Eventos/Detalles/{Id}"
+@using Microsoft.AspNetCore.Identity
+@using QRCoder;
+@using System.Drawing;
+@using System.Drawing.Imaging;
+@using System.IO;
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject UserManager<IdentityUser> _userManager;
+<PageTitle>Detalles Conferencia - SLADE</PageTitle>
+<MudGrid Class="mt-2">
+    <MudItem xs="12" sm="12" md="12">
+        <MudCard Style="height:100%;border-color:#F2BC40; border-width: thin;">
+            <MudCardHeader Style="background-color:#F2BC40">
+                <CardHeaderContent>
+                    <div class="d-flex justify-center">
+                        <MudText Typo="Typo.h4" Color="MudBlazor.Color.Inherit"><b>Detalles de la Conferencia</b></MudText>
+                    </div>
+                </CardHeaderContent>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudGrid Class="px-0 ml-2">
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Nombre: </b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8"> <MudText Typo="Typo.h6">@Evento.Nombre</MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Descripción:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.Descripcion</MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Hora de Inicio:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.HoraInicio</MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Hora a Finalizar:</b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Evento.HoraTermino </MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Lugar: </b></MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">@Area.Nombre</MudText></MudItem>
+                    <MudItem xs="12" sm="12" md="4"><MudText Typo="Typo.h6"><b>Status: </b></MudText></MudItem>
+                    @if (@Registro.Asistencia)
+                    {
+                        <MudItem xs="12" sm="12" md="8"><MudText Color="MudBlazor.Color.Primary" Typo="Typo.h6">Asistencia registrada a la conferencia</MudText></MudItem>
+
+                    }
+                    else @if (Registro.Id == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+                    {
+                        @if (!ExisteRegistro)
+                        {@*
+                    @if (Evento.AgendaAbierta == true)
+                    {*@
+                            <MudItem xs="12" sm="12" md="8"><MudText Color="MudBlazor.Color.Warning" Typo="Typo.h6">Oportunidad de Registro</MudText></MudItem>
+                            <MudItem xs="12" sm="12" md="4">
+                                <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Primary" OnClick="Registrarse">Registrarse</MudButton>
+                            </MudItem>
+                            @*                            }
+                    else
+                    {
+                    <MudItem xs="12" sm="12" md="8"><MudText Color="MudBlazor.Color.Warning" Typo="Typo.h6">Agenda Cerrada</MudText></MudItem>
+                    }*@
+                        }
+                        else
+                        {
+                            <MudItem xs="12" sm="12" md="8"><MudText Color="MudBlazor.Color.Error" Typo="Typo.h6">Sin oportunidad de Registro, ya  cuenta con uno en el horario seleccionado</MudText></MudItem>
+                        }
+                        <br />
+                    }
+                    else
+                    {
+                        <MudItem xs="12" sm="12" md="8"><MudText Typo="Typo.h6">Registro Exitoso.</MudText></MudItem>
+                        @if (Evento.Desasociar)
+                        {
+                            <MudItem xs="12" sm="12" md="4">
+                                <MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Error" OnClick="Eliminar">Eliminar Registro</MudButton>
+                            </MudItem>
+                        }
+                        <br />
+                    }
+                </MudGrid>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    @*    <MudItem xs="12" sm="12" md="3">
+    <MudCard Style="height:100%;">
+    <MudCardContent>
+    <MudGrid>
+    @if (Registro.Id != Guid.Parse("00000000-0000-0000-0000-000000000000"))
+    {
+    <MudItem xs="12" sm="12" md="12">
+    <MudImage Fluid="true" Src="@QRCodeSr"></MudImage>
+    </MudItem>
+    }
+    </MudGrid>
+    </MudCardContent>
+    </MudCard>
+    </MudItem>*@
+</MudGrid>
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    public Evento Evento { get; set; }
+    public Area Area { get; set; }
+    public List<RegistrosViewModel> ParticipantesRegistrados { get; set; }
+    public Guid ParticipanteId { get; set; }
+    public bool ExisteRegistro { get; set; }
+    public Registro Registro { get; set; }
+    public string QRCodeSr { get; set; }
+
+    public async Task Registrarse()
+    {
+
+        if (Evento.Cupo <= 0)
+        {
+            Snackbar.Add("No hay cupo disponible", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 1000; });
+        }
+        else
+        {
+            Registro.HoraDeRegistro = DateTime.Now.ToUniversalTime();
+
+            Evento.Cupo = Evento.Cupo - 1;
+            _DbContext.Registro.Add(Registro);
+            _DbContext.Evento.Update(Evento);
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+            //    QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(Registro.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
+            //    QRCode qRCode = new QRCode(qRCodeData);
+            //    using (Bitmap bit = qRCode.GetGraphic(20))
+            //    {
+            //        bit.Save(ms, ImageFormat.Png);
+            //        QRCodeSr = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+            //    }
+            //}
+
+            await _DbContext.SaveChangesAsync();
+            Snackbar.Add("Registro Exitoso", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+        }
+    }
+    public async Task Eliminar()
+    {
+        Registro.HoraDeRegistro = null;
+        Evento.Cupo = Evento.Cupo + 1;
+        _DbContext.Registro.Remove(Registro);
+        _DbContext.Evento.Update(Evento);
+        await _DbContext.SaveChangesAsync();
+        Registro = new Registro
+            {
+                EventoId = Evento.Id,
+                ParticipanteId = ParticipanteId
+            };
+        Snackbar.Add("Registro Eliminado", Severity.Success, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Evento = _DbContext.Evento.FirstOrDefault(p => p.Id == Guid.Parse(Id));
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var current = authstate.User.Identity.Name;
+        var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        ParticipanteId = participante.Id;
+        Registro = _DbContext.Registro.Where(p => p.ParticipanteId == participante.Id && p.EventoId == Evento.Id).FirstOrDefault();
+        Area = _DbContext.Area.FirstOrDefault(m => m.Id == Evento.AreaId);
+
+        if (Registro != null)
+        {
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+            //    QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(Registro.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
+            //    QRCode qRCode = new QRCode(qRCodeData);
+            //    using (Bitmap bit = qRCode.GetGraphic(20))
+            //    {
+            //        bit.Save(ms, ImageFormat.Png);
+            //        QRCodeSr = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+            //    }
+            //}
+        }
+        else
+        {
+            Registro = new Registro
+                {
+                    EventoId = Evento.Id,
+                    ParticipanteId = participante.Id
+                };
+            var registros = _DbContext.Registro.Where(p => p.ParticipanteId == Registro.ParticipanteId).ToList();
+
+            var inicio = Evento.HoraInicio.Value;
+            var final = Evento.HoraTermino.Value;
+            foreach (var item in registros)
+            {
+                var registro = _DbContext.Evento.FirstOrDefault(p => p.Id == item.EventoId);
+                var registroInicio = registro.HoraInicio.Value;
+                var registrofinal = registro.HoraTermino.Value;
+                if (inicio >= registroInicio && inicio <= registrofinal)
+                {
+                    ExisteRegistro = true;
+                }
+            }
+        }
+
+    }
+
+}
