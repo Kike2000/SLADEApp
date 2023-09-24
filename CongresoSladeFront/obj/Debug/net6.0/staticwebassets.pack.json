@@ -1,0 +1,97 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa1.png",
+      "PackagePath": "staticwebassets\\Mesa1.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa2.png",
+      "PackagePath": "staticwebassets\\Mesa2.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa3.png",
+      "PackagePath": "staticwebassets\\Mesa3.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa4.png",
+      "PackagePath": "staticwebassets\\Mesa4.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\curvas_.png",
+      "PackagePath": "staticwebassets\\curvas_.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\elemento_1.png",
+      "PackagePath": "staticwebassets\\elemento_1.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\fechas.png",
+      "PackagePath": "staticwebassets\\fechas.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header2.png",
+      "PackagePath": "staticwebassets\\header2.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header3.png",
+      "PackagePath": "staticwebassets\\header3.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header4.png",
+      "PackagePath": "staticwebassets\\header4.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header5.png",
+      "PackagePath": "staticwebassets\\header5.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logo_monocromo.png",
+      "PackagePath": "staticwebassets\\logo_monocromo.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logo_monocromo_2.png",
+      "PackagePath": "staticwebassets\\logo_monocromo_2.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logos.png",
+      "PackagePath": "staticwebassets\\logos.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\openfile.js",
+      "PackagePath": "staticwebassets\\openfile.js"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\participantes.json",
+      "PackagePath": "staticwebassets\\participantes.json"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\slade.png",
+      "PackagePath": "staticwebassets\\slade.png"
+    },
+    {
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\testing.png",
+      "PackagePath": "staticwebassets\\testing.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CongresoServer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.CongresoServer.props",
+      "PackagePath": "build\\CongresoServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.CongresoServer.props",
+      "PackagePath": "buildMultiTargeting\\CongresoServer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.CongresoServer.props",
+      "PackagePath": "buildTransitive\\CongresoServer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

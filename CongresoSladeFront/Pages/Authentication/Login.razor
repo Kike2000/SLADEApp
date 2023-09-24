@@ -1,0 +1,61 @@
+﻿@page "/Login"
+@inject UserManager<IdentityUser> _userManager
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject ApplicationDbContext _DbContext
+@inject ISnackbar Snackbar
+@layout LoginLayout
+
+<PageTitle>Login - SLADE</PageTitle>
+
+<div class="d-flex justify-center">
+    <MudImage ObjectPosition="ObjectPosition.Center" Src="./slade.png" Fluid=true />
+</div>
+<div class="d-flex justify-center">
+    <MudText>Ingresa tus datos</MudText>
+</div>
+<MudTextField T="string" @bind-Value="@Email" Label="Email" Variant="Variant.Outlined" Class="my-6"></MudTextField>
+<MudTextField @bind-Value="@Password" Label="Contraseña" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
+
+<div Class="d-flex justify-space-between align-center">
+    <MudCheckBox T="bool" Label="Recordar Sesión" @bind-Checked="@RememberMe" Color="MudBlazor.Color.Warning" Class="ml-n1 my-3"></MudCheckBox>
+    @*<MudLink Href="/ForgotPassword">Forgot your password?</MudLink>*@
+</div>
+<MudButton Variant="Variant.Filled" Color="MudBlazor.Color.Warning" OnClick="Save" Size="Size.Large" FullWidth="true">Iniciar Sesión</MudButton>
+@code {
+    string Password { get; set; } = "";
+    string Email { get; set; } = "";
+    public bool RememberMe { get; set; }
+    public IList<AuthenticationScheme> ExternalLogins { get; set; }
+    bool PasswordVisibility;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    void TogglePasswordVisibility()
+    {
+        PasswordVisibility = !PasswordVisibility;
+        PasswordInputIcon = PasswordVisibility ? Icons.Material.Filled.VisibilityOff : Icons.Material.Filled.Visibility;
+        PasswordInput = PasswordVisibility ? InputType.Password : InputType.Text;
+    }
+    public async void Save()
+    {
+        var identityUser = await _userManager.FindByEmailAsync(Email);
+        if (identityUser == null)
+        {
+            Snackbar.Add("Usuario no encontrado", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 1000; });
+        }
+        else
+        {
+            if (await _userManager.CheckPasswordAsync(identityUser, Password) == false)
+            {
+                Snackbar.Add("El correo electrónico que ingresaste o Contraseña no son correctos", Severity.Error, config => { config.ShowCloseIcon = true; config.ShowTransitionDuration = 150; config.HideTransitionDuration = 150; config.VisibleStateDuration = 3000; });
+            }
+            else
+            {
+                NavigationManager.NavigateTo("/Account/LoginInternal?User=" + Email + "&Password=" + Password + "&RememberMe=" + RememberMe, true);
+            }
+        }
+
+
+    }
+}

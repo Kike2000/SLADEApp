@@ -1,0 +1,14 @@
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\bin\Debug\net6.0\CongresoSlade.Domain.deps.json
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\bin\Debug\net6.0\CongresoSlade.Domain.runtimeconfig.json
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\bin\Debug\net6.0\CongresoSlade.Domain.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\bin\Debug\net6.0\CongresoSlade.Domain.pdb
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.csproj.AssemblyReference.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.AssemblyInfoInputs.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.AssemblyInfo.cs
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\refint\CongresoSlade.Domain.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.pdb
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\CongresoSlade.Domain.genruntimeconfig.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Domain\obj\Debug\net6.0\ref\CongresoSlade.Domain.dll

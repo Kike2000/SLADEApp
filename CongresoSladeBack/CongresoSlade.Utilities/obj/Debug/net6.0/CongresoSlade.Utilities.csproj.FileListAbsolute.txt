@@ -1,0 +1,11 @@
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\bin\Debug\net6.0\CongresoSlade.Utilities.deps.json
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\bin\Debug\net6.0\CongresoSlade.Utilities.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\bin\Debug\net6.0\CongresoSlade.Utilities.pdb
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.AssemblyInfoInputs.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.AssemblyInfo.cs
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\refint\CongresoSlade.Utilities.dll
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\CongresoSlade.Utilities.pdb
+C:\Users\pedro\OneDrive\Escritorio\CongresoSladeBack\CongresoSlade.Utilities\obj\Debug\net6.0\ref\CongresoSlade.Utilities.dll

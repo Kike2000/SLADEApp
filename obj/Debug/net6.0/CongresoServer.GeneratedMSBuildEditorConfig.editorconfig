@@ -5,188 +5,193 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CongresoServer
 build_property.RootNamespace = CongresoServer
-build_property.ProjectDir = C:\Users\pedro\Videos\NexLead\
+build_property.ProjectDir = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\pedro\Videos\NexLead
+build_property.MSBuildProjectDirectory = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/pedro/Videos/NexLead/App.razor]
-build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XEFwcC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Authentication/Forgot.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cRm9yZ290LnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Forgot.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEF1dGhlbnRpY2F0aW9uXEZvcmdvdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Authentication/Login.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9naW4ucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEF1dGhlbnRpY2F0aW9uXExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Authentication/Register.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEF1dGhlbnRpY2F0aW9uXFJlZ2lzdGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Authentication/Roles.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUm9sZXMucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Roles.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEF1dGhlbnRpY2F0aW9uXFJvbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/AgregarConferenciaDialog.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xBZ3JlZ2FyQ29uZmVyZW5jaWFEaWFsb2cucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/AgregarConferenciaDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcQWdyZWdhckNvbmZlcmVuY2lhRGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/ConferenciasAsistidasDialog.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xDb25mZXJlbmNpYXNBc2lzdGlkYXNEaWFsb2cucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/ConferenciasAsistidasDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcQ29uZmVyZW5jaWFzQXNpc3RpZGFzRGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Crear.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xDcmVhci5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Crear.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcQ3JlYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Dashboard.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEYXNoYm9hcmQucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Detalles.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEZXRhbGxlcy5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Detalles.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRGV0YWxsZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/DetallesAdministrador.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEZXRhbGxlc0FkbWluaXN0cmFkb3IucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/DetallesAdministrador.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRGV0YWxsZXNBZG1pbmlzdHJhZG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Dialogs.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEaWFsb2dzLnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Dialogs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRGlhbG9ncy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Edit.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xFZGl0LnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Edit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/EventosAsistidos.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xFdmVudG9zQXNpc3RpZG9zLnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/EventosAsistidos.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcRXZlbnRvc0FzaXN0aWRvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xJbmRleC5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Eventos/MiAgenda.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xNaUFnZW5kYS5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/MiAgenda.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEV2ZW50b3NcTWlBZ2VuZGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEluZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Lugares/Crear.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xDcmVhci5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Crear.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEx1Z2FyZXNcQ3JlYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Lugares/Editar.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xFZGl0YXIucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Editar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEx1Z2FyZXNcRWRpdGFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Lugares/Lugares.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xMdWdhcmVzLnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Lugares.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEx1Z2FyZXNcTHVnYXJlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Personal/Account.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uYWxcQWNjb3VudC5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Personal/Account.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFBlcnNvbmFsXEFjY291bnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Preguntas/FAQ.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlZ3VudGFzXEZBUS5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Preguntas/FAQ.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFByZWd1bnRhc1xGQVEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Reportes/ReporteAsistenciaPorEvento.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0ZXNcUmVwb3J0ZUFzaXN0ZW5jaWFQb3JFdmVudG8ucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Reportes/Graficas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFJlcG9ydGVzXEdyYWZpY2FzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/Administradores.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcQWRtaW5pc3RyYWRvcmVzLnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Reportes/ReporteAsistenciaPorEvento.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFJlcG9ydGVzXFJlcG9ydGVBc2lzdGVuY2lhUG9yRXZlbnRvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/Agendas.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcQWdlbmRhcy5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Administradores.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXEFkbWluaXN0cmFkb3Jlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcSW5kZXgucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Agendas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXEFnZW5kYXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/NombreUsuarioDialog.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcTm9tYnJlVXN1YXJpb0RpYWxvZy5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXEluZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/UserMessage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcVXNlck1lc3NhZ2UucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/NombreUsuarioDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXE5vbWJyZVVzdWFyaW9EaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Usuarios/Usuarios.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcVXN1YXJpb3MucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/UserMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXFVzZXJNZXNzYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/Layouts/ErrorLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExheW91dHNcRXJyb3JMYXlvdXQucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Usuarios.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXFVzdWFyaW9zXFVzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/Layouts/LoginLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExheW91dHNcTG9naW5MYXlvdXQucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/Layouts/ErrorLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxMYXlvdXRzXEVycm9yTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/LoginLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/Layouts/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxMYXlvdXRzXExvZ2luTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxMb2dpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxNYWluTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/PersonCard.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBlcnNvbkNhcmQucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxOYXZNZW51LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Shared/RedirectToLogin.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/PersonCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxQZXJzb25DYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/_Imports.razor]
-build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFNoYXJlZFxSZWRpcmVjdFRvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/CrearUsuario.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXJVc3VhcmlvLmNzaHRtbA==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XF9JbXBvcnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/CrearUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXENyZWFyVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/Help.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGVscC5jc2h0bWw=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/_Host.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Help.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXEhlbHAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXF9Ib3N0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/Videos/NexLead/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29uZ3Jlc29TbGFkZUZyb250XFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
