@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj": {}
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj",
         "projectName": "CongresoSlade.API",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,14 +33,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj"
               },
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj"
               },
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
               }
             }
           }
@@ -89,14 +89,14 @@
         }
       }
     },
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
         "projectName": "CongresoSlade.Application",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -118,14 +118,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj"
               },
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj"
               },
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
               }
             }
           }
@@ -177,14 +177,14 @@
         }
       }
     },
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
         "projectName": "CongresoSlade.Domain",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -249,14 +249,14 @@
         }
       }
     },
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
         "projectName": "CongresoSlade.Infrastructure",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -278,11 +278,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj"
               },
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj"
               }
             }
           }
@@ -322,14 +322,14 @@
         }
       }
     },
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj",
         "projectName": "CongresoSlade.Utilities",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\CongresoSlade.Utilities.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Utilities\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -382,14 +382,14 @@
         }
       }
     },
-    "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj",
         "projectName": "SladeCongreso.Test",
-        "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\SladeCongreso.Test\\SladeCongreso.Test.csproj",
         "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\SladeCongreso.Test\\obj\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\SladeCongreso.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -411,8 +411,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj": {
-                "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj"
+              "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj": {
+                "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.API\\CongresoSlade.API.csproj"
               }
             }
           }

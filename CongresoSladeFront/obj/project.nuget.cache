@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1eCgps9uPxvnrnnXoCnS04rcOfWpHg4i61bPR3YsM9eU6jltBa8qiXMgbeGyft3s7BcgNv0ENxiZNOYsF/wfUQ==",
+  "dgSpecHash": "UOO+SpvnIf6WVAu4QDz07ao/NhzWZ8jg6/ftLTDcdVIG+ag+PQcGZbjstlf1TKrlPkJfvdlabh1qij/OyG3XYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoServer.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\CongresoServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\ae.net.mail\\1.7.10\\ae.net.mail.1.7.10.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

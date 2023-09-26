@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CongresoSlade.Domain.Entities
 {
-    public partial class Participante
+    public partial class Participante : BaseEntity
     {
         public Guid Id { get; set; }
         public string? Nombre { get; set; }

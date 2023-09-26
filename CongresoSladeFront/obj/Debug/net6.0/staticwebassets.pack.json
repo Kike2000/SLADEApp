@@ -1,79 +1,79 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa1.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\Mesa1.png",
       "PackagePath": "staticwebassets\\Mesa1.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa2.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\Mesa2.png",
       "PackagePath": "staticwebassets\\Mesa2.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa3.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\Mesa3.png",
       "PackagePath": "staticwebassets\\Mesa3.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\Mesa4.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\Mesa4.png",
       "PackagePath": "staticwebassets\\Mesa4.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\curvas_.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\curvas_.png",
       "PackagePath": "staticwebassets\\curvas_.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\elemento_1.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\elemento_1.png",
       "PackagePath": "staticwebassets\\elemento_1.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\fechas.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\fechas.png",
       "PackagePath": "staticwebassets\\fechas.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header2.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\header2.png",
       "PackagePath": "staticwebassets\\header2.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header3.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\header3.png",
       "PackagePath": "staticwebassets\\header3.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header4.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\header4.png",
       "PackagePath": "staticwebassets\\header4.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\header5.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\header5.png",
       "PackagePath": "staticwebassets\\header5.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logo_monocromo.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\logo_monocromo.png",
       "PackagePath": "staticwebassets\\logo_monocromo.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logo_monocromo_2.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\logo_monocromo_2.png",
       "PackagePath": "staticwebassets\\logo_monocromo_2.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\logos.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\logos.png",
       "PackagePath": "staticwebassets\\logos.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\openfile.js",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\openfile.js",
       "PackagePath": "staticwebassets\\openfile.js"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\participantes.json",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\participantes.json",
       "PackagePath": "staticwebassets\\participantes.json"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\slade.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\slade.png",
       "PackagePath": "staticwebassets\\slade.png"
     },
     {
-      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\wwwroot\\testing.png",
+      "Id": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeFront\\wwwroot\\testing.png",
       "PackagePath": "staticwebassets\\testing.png"
     },
     {

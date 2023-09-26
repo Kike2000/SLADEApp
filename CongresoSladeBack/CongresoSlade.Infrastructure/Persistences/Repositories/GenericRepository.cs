@@ -1,4 +1,5 @@
-﻿using CongresoSlade.Infrastructure.Commons.Bases.Request;
+﻿using CongresoSlade.Domain.Entities;
+using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Helpers;
 using CongresoSlade.Infrastructure.Persistences.Context;
 using CongresoSlade.Infrastructure.Persistences.Interfaces;
@@ -8,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace CongresoSlade.Infrastructure.Persistences.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly CongresoServerDbContext _context;
         private readonly DbSet<T> _entity;
@@ -17,23 +18,24 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
             _context = context;
             _entity = _context.Set<T>();
         }
-        public Task<bool> RegisterAsync(T entity)
+        public async Task<bool> RegisterAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(entity);
+            var recordsAffected = await _context.SaveChangesAsync();
+            return recordsAffected > 0;
         }
-        public Task<bool> EditAsync(T entity)
+        public async Task<bool> EditAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+
+            var affectedRows = await _context.SaveChangesAsync();
+            return affectedRows > 0;
         }
 
-        public Task<IEnumerable<T>> GetAlltAsync()
+        public async Task<IEnumerable<T>> GetAlltAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+            var getAll = await _entity.Where(x => x.AgendaAbierta).AsNoTracking().ToListAsync();
+            return getAll;
         }
 
         public IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null)
@@ -60,6 +62,12 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
         IQueryable<TDTO> IGenericRepository<T>.Ordering<TDTO>(BasePaginationRequest paginationRequest, IQueryable<TDTO> queryable, bool pagination)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<T> GetByIdAsync(Guid id)
+        {
+            var getById = await _entity!.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(id));
+            return getById!;
         }
     }
 }

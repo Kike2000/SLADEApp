@@ -2018,11 +2018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
       "projectName": "CongresoSlade.Domain",
-      "projectPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
+      "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
       "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\obj\\",
+      "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

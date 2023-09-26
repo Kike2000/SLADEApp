@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WX6LQpx/7q9V/MrYct7aWhypnFF3YRlsnMmBOr9VfVaDCK64X5g9aKA9D4Kkmo9AciNqSXIyj+Gb2vkhAWo42Q==",
+  "dgSpecHash": "jkc0FclCJuPMQKG8R0mYG0ZDWHQURgW3pmsDVSKEosfQDvg+998c4GrGBxYDcjF1UHak53tdQDzsDVzrKJMniQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Application\\CongresoSlade.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

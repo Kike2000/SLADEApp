@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vUMl1SyB9DoNg86tSGeX1xnTI7Jg5hSfxByPLoG3wkE5Sn84H1UkZ5LPXYYoG74KUR02EIwz5mAFWiNreu7wkA==",
+  "dgSpecHash": "bPu272dNy3DAQzBmsgI9hd4irtD4V7I4gDUHQwJg1p1rYlWFRq6taK+j2eQzJZDsVIquJvqgDTJbFGBahHuhmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Domain\\CongresoSlade.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

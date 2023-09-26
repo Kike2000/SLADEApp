@@ -9,185 +9,185 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CongresoServer
 build_property.RootNamespace = CongresoServer
-build_property.ProjectDir = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\
+build_property.ProjectDir = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeFront\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp
+build_property.MSBuildProjectDirectory = C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeFront
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/App.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Authentication/Forgot.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Forgot.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cRm9yZ290LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Authentication/Login.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Authentication/Register.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Authentication/Roles.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Authentication/Roles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cUm9sZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/AgregarConferenciaDialog.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/AgregarConferenciaDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xBZ3JlZ2FyQ29uZmVyZW5jaWFEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/ConferenciasAsistidasDialog.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/ConferenciasAsistidasDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xDb25mZXJlbmNpYXNBc2lzdGlkYXNEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Crear.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Crear.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xDcmVhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Dashboard.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEYXNoYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Detalles.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Detalles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEZXRhbGxlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/DetallesAdministrador.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/DetallesAdministrador.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEZXRhbGxlc0FkbWluaXN0cmFkb3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Dialogs.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Dialogs.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xEaWFsb2dzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Edit.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Edit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/EventosAsistidos.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/EventosAsistidos.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xFdmVudG9zQXNpc3RpZG9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/Index.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Eventos/MiAgenda.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Eventos/MiAgenda.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRvc1xNaUFnZW5kYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Index.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Lugares/Crear.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Crear.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xDcmVhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Lugares/Editar.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Editar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xFZGl0YXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Lugares/Lugares.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Lugares/Lugares.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTHVnYXJlc1xMdWdhcmVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Personal/Account.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Personal/Account.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uYWxcQWNjb3VudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Preguntas/FAQ.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Preguntas/FAQ.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJlZ3VudGFzXEZBUS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Reportes/ReporteAsistenciaPorEvento.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Reportes/ReporteAsistenciaPorEvento.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0ZXNcUmVwb3J0ZUFzaXN0ZW5jaWFQb3JFdmVudG8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/Administradores.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Administradores.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcQWRtaW5pc3RyYWRvcmVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/Agendas.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Agendas.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcQWdlbmRhcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/Index.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/NombreUsuarioDialog.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/NombreUsuarioDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcTm9tYnJlVXN1YXJpb0RpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/UserMessage.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/UserMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcVXNlck1lc3NhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Usuarios/Usuarios.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Usuarios/Usuarios.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3NcVXN1YXJpb3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/Layouts/ErrorLayout.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/Layouts/ErrorLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExheW91dHNcRXJyb3JMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/Layouts/LoginLayout.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/Layouts/LoginLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExheW91dHNcTG9naW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/LoginLayout.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/LoginLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/MainLayout.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/NavMenu.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/PersonCard.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/PersonCard.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFBlcnNvbkNhcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Shared/RedirectToLogin.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Shared/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/_Imports.razor]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/CrearUsuario.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/CrearUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Error.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/Help.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/Help.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGVscC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/_Host.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/_Layout.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/_ViewImports.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/Pages/_ViewStart.cshtml]
+[C:/Users/pedro/OneDrive/Documentos/GitHub/SladeApp/CongresoSladeFront/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

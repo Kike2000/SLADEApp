@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3vPknhsTJueEDiGv+bSd7sZhiGR3wLNK7lUFwPNqJnBG0MqC5rhuZ3G7kumD+nfttkIGUDW9EyRdLJHn1RdzIg==",
+  "dgSpecHash": "fdBciP79t04bD9IuSpQGHPbmv9kJbHHgVmuEqYFpcoSDSsS8o6JD+RzjugArqDY2/YobjFqqfNxB3ictUigEtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Escritorio\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\SladeApp\\CongresoSladeBack\\CongresoSlade.Infrastructure\\CongresoSlade.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\pedro\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
