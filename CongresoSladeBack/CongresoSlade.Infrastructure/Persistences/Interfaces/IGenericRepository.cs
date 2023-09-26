@@ -15,7 +15,7 @@ namespace CongresoSlade.Infrastructure.Persistences.Interfaces
         Task<T> GetByIdAsync(Guid id);
         Task<bool> RegisterAsync(T entity);
         Task<bool> EditAsync(T entity);
-        Task<bool> RemoveAsync(int id);
+        Task<bool> RemoveAsync(Guid id);
         IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null);
         IQueryable<TDTO> Ordering<TDTO>(BasePaginationRequest paginationRequest, IQueryable<TDTO> queryable, bool pagination = false) where TDTO : class;
     }

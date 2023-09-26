@@ -138,9 +138,29 @@ namespace CongresoSlade.Application.Services
             return response;
         }
 
-        public Task<BaseResponse<bool>> RemoveEvento(Guid eventoId)
+        public async Task<BaseResponse<bool>> RemoveEvento(Guid eventoId)
         {
-            throw new NotImplementedException();
+            var response = new BaseResponse<bool>();
+            var eventoExists = await EventoById(eventoId);
+            if (eventoExists.Data == null)
+            {
+                response.IsSucessful = true;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+            }
+
+            response.Data = await _unitOfWork.Evento.RemoveAsync(eventoId);
+            if (response.Data)
+            {
+                response.IsSucessful = true;
+                response.Message = ReplyMessage.MESSAGE_DELETE;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_FAIL;
+            }
+
+            return response;
         }
     }
 }

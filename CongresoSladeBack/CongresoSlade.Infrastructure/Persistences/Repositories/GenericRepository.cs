@@ -46,9 +46,17 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
         }
 
 
-        public Task<bool> RemoveAsync(int id)
+        public async Task<bool> RemoveAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var evento = await _context.Eventos.FirstOrDefaultAsync(x => x.Id == id);
+            if (evento == null)
+            {
+                return false;
+            }
+            _context.Eventos.Remove(evento);
+
+            var affectedRows = await _context.SaveChangesAsync();
+            return affectedRows > 0;
         }
 
         protected IQueryable<TDTO> Ordering<TDTO>(BasePaginationRequest paginationRequest, IQueryable<TDTO> queryable, bool pagination = false) where TDTO : class

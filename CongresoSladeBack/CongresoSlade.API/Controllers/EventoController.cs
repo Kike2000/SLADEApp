@@ -42,5 +42,11 @@ namespace CongresoSlade.API.Controllers
             var response = await _eventoApplication.EditEvento(EventoId, filters);
             return Ok(response);
         }
+        [HttpPost("Remove/{EventoId}")]
+        public async Task<IActionResult> RemoveEvento(Guid EventoId)
+        {
+            var response = await _eventoApplication.RemoveEvento(EventoId);
+            return Ok(response);
+        }
     }
 }
