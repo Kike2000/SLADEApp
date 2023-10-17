@@ -34,11 +34,11 @@ namespace CongresoSlade.Application.Services
         public async Task<BaseResponse<EventoResponseDTO>> EventoById(Guid id)
         {
             var response = new BaseResponse<EventoResponseDTO>();
-            var category = await _unitOfWork.Evento.GetByIdAsync(id);
-            if (category != null)
+            var evento = await _unitOfWork.Evento.GetByIdAsync(id);
+            if (evento != null)
             {
                 response.IsSucessful = true;
-                response.Data = _mapper.Map<EventoResponseDTO>(category);
+                response.Data = _mapper.Map<EventoResponseDTO>(evento);
                 response.Message = ReplyMessage.MESSAGE_QUERY;
             }
             else
@@ -52,8 +52,8 @@ namespace CongresoSlade.Application.Services
         public async Task<BaseResponse<bool>> EditEvento(Guid eventoId, EventoRequestDTO requestDTO)
         {
             var response = new BaseResponse<bool>();
-            var categoryEdit = await EventoById(eventoId);
-            if (categoryEdit.Data == null)
+            var eventoEdit = await EventoById(eventoId);
+            if (eventoEdit.Data == null)
             {
                 response.IsSucessful = true;
                 response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
@@ -123,8 +123,9 @@ namespace CongresoSlade.Application.Services
                 response.Errors = validationResult.Errors;
                 return response;
             }
-            var category = _mapper.Map<Evento>(requestDTO);
-            response.Data = await _unitOfWork.Evento.RegisterAsync(category);
+            var evento = _mapper.Map<Evento>(requestDTO);
+            evento.Id = Guid.NewGuid();
+            response.Data = await _unitOfWork.Evento.RegisterAsync(evento);
             if (response.Data)
             {
                 response.IsSucessful = true;
