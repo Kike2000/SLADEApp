@@ -7,17 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{37466A60-CC7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{73544BB2-194F-4E86-9505-F47DB7BDA33F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.Application", "CongresoSlade.Application\CongresoSlade.Application.csproj", "{B8BA1AA0-78E4-4D50-AF2F-E36E8C5AED83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CongresoSlade.Application", "CongresoSlade.Application\CongresoSlade.Application.csproj", "{B8BA1AA0-78E4-4D50-AF2F-E36E8C5AED83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.Domain", "CongresoSlade.Domain\CongresoSlade.Domain.csproj", "{CDD8737A-B267-4467-8F97-201D6ADCD327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CongresoSlade.Domain", "CongresoSlade.Domain\CongresoSlade.Domain.csproj", "{CDD8737A-B267-4467-8F97-201D6ADCD327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.Infrastructure", "CongresoSlade.Infrastructure\CongresoSlade.Infrastructure.csproj", "{4F86129C-EC01-4243-B6A5-DFFE5C08CED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CongresoSlade.Infrastructure", "CongresoSlade.Infrastructure\CongresoSlade.Infrastructure.csproj", "{4F86129C-EC01-4243-B6A5-DFFE5C08CED9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.Utilities", "CongresoSlade.Utilities\CongresoSlade.Utilities.csproj", "{25F311C0-0FDE-4169-8897-91C022AD86C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CongresoSlade.Utilities", "CongresoSlade.Utilities\CongresoSlade.Utilities.csproj", "{25F311C0-0FDE-4169-8897-91C022AD86C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.API", "CongresoSlade.API\CongresoSlade.API.csproj", "{69FFE7D0-F37A-458F-A89C-FCA68A1BD665}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CongresoSlade.API", "CongresoSlade.API\CongresoSlade.API.csproj", "{69FFE7D0-F37A-458F-A89C-FCA68A1BD665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SladeCongreso.Test", "SladeCongreso.Test\SladeCongreso.Test.csproj", "{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SladeCongreso.Test", "SladeCongreso.Test\SladeCongreso.Test.csproj", "{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CongresoSlade.AzFunctions", "CongresoSlade.AzFunctions\CongresoSlade.AzFunctions.csproj", "{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{25F311C0-0FDE-4169-8897-91C022AD86C4} = {37466A60-CC70-4D7F-AEC3-9358F24C7CE1}
 		{69FFE7D0-F37A-458F-A89C-FCA68A1BD665} = {37466A60-CC70-4D7F-AEC3-9358F24C7CE1}
 		{D3CBB40B-A43A-4AC4-AEFA-B012A58C080B} = {73544BB2-194F-4E86-9505-F47DB7BDA33F}
+		{B5CC007C-0A2F-4540-8FC4-CDDA9AE80D58} = {37466A60-CC70-4D7F-AEC3-9358F24C7CE1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB1C1AF8-0C83-408D-A083-A035138D718D}
