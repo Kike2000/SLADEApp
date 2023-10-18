@@ -9,12 +9,6 @@ using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Commons.Bases.Response;
 using CongresoSlade.Infrastructure.Persistences.Interfaces;
 using CongresoSlade.Utilities.Static;
-using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CongresoSlade.Application.Services
 {
@@ -29,6 +23,42 @@ namespace CongresoSlade.Application.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _validationRules = validationRules;
+        }
+
+        public async Task<BaseResponse<BaseEntityResponse<EventoResponseDTO>>> ListEventos(BaseFilterRequest filters)
+        {
+            var response = new BaseResponse<BaseEntityResponse<EventoResponseDTO>>();
+            var eventos = await _unitOfWork.Evento.ListEventos(filters);
+            if (eventos != null)
+            {
+                response.IsSucessful = true;
+                response.Data = _mapper.Map<BaseEntityResponse<EventoResponseDTO>>(eventos);
+                response.Message = ReplyMessage.MESSAGE_QUERY;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+            }
+            return response;
+        }
+
+        public async Task<BaseResponse<IEnumerable<EventoSelectResponseDTO>>> ListSelectEventos()
+        {
+            var response = new BaseResponse<IEnumerable<EventoSelectResponseDTO>>();
+            var eventos = await _unitOfWork.Evento.GetAlltAsync();
+            if (eventos != null)
+            {
+                response.IsSucessful = true;
+                response.Data = _mapper.Map<IEnumerable<EventoSelectResponseDTO>>(eventos);
+                response.Message = ReplyMessage.MESSAGE_QUERY;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+            }
+            return response;
         }
 
         public async Task<BaseResponse<EventoResponseDTO>> EventoById(Guid id)
@@ -70,44 +100,6 @@ namespace CongresoSlade.Application.Services
             {
                 response.IsSucessful = false;
                 response.Message = ReplyMessage.MESSAGE_FAIL;
-            }
-
-            return response;
-        }
-
-        public async Task<BaseResponse<BaseEntityResponse<EventoResponseDTO>>> ListEventos(BaseFilterRequest filters)
-        {
-
-            var response = new BaseResponse<BaseEntityResponse<EventoResponseDTO>>();
-            var eventos = await _unitOfWork.Evento.ListEventos(filters);
-            if (eventos != null)
-            {
-                response.IsSucessful = true;
-                response.Data = _mapper.Map<BaseEntityResponse<EventoResponseDTO>>(eventos);
-                response.Message = ReplyMessage.MESSAGE_QUERY;
-            }
-            else
-            {
-                response.IsSucessful = false;
-                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
-            }
-            return response;
-        }
-
-        public async Task<BaseResponse<IEnumerable<EventoSelectResponseDTO>>> ListSelectEventos()
-        {
-            var response = new BaseResponse<IEnumerable<EventoSelectResponseDTO>>();
-            var eventos = await _unitOfWork.Evento.GetAlltAsync();
-            if (eventos != null)
-            {
-                response.IsSucessful = true;
-                response.Data = _mapper.Map<IEnumerable<EventoSelectResponseDTO>>(eventos);
-                response.Message = ReplyMessage.MESSAGE_QUERY;
-            }
-            else
-            {
-                response.IsSucessful = false;
-                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
             }
             return response;
         }

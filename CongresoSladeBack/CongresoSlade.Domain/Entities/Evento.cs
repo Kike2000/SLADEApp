@@ -10,5 +10,7 @@ namespace CongresoSlade.Domain.Entities
         public DateTime? HoraTermino { get; set; }
         public int Cupo { get; set; }
         public bool Desasociar { get; set; }
+        public bool AgendaAbierta { get; set; }
+        public Guid AreaId { get; set; }
     }
 }

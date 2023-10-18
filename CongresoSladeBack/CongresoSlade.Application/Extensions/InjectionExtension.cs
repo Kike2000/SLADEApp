@@ -26,6 +26,7 @@ namespace CongresoSlade.Application.Extensions
             });
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IEventoApplication, EventoApplication>();
+            services.AddScoped<IParticipanteApplication, ParticipanteApplication>();
             return services;
         }
     }

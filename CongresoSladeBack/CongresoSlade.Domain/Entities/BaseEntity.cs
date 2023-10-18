@@ -10,7 +10,5 @@ namespace CongresoSlade.Domain.Entities
     {
         public Guid Id { get; set; }
         public string? Nombre { get; set; }
-        public bool AgendaAbierta { get; set; }
-        public Guid AreaId { get; set; }
     }
 }

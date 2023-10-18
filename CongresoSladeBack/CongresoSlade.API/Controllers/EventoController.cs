@@ -1,7 +1,6 @@
 ﻿using CongresoSlade.Application.DTOs.Request;
 using CongresoSlade.Application.Interfaces;
 using CongresoSlade.Infrastructure.Commons.Bases.Request;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CongresoSlade.API.Controllers

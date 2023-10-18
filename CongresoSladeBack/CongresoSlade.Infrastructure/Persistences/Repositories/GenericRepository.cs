@@ -34,7 +34,12 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
 
         public async Task<IEnumerable<T>> GetAlltAsync()
         {
-            var getAll = await _entity.Where(x => x.AgendaAbierta).AsNoTracking().ToListAsync();
+            var getAll = await _entity.AsNoTracking().ToListAsync();
+            return getAll;
+        }
+        public async Task<IEnumerable<T>> GetAllParticipantestAsync()
+        {
+            var getAll = await _entity.AsNoTracking().ToListAsync();
             return getAll;
         }
 
@@ -67,10 +72,10 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
             return queryDTO;
         }
 
-        IQueryable<TDTO> IGenericRepository<T>.Ordering<TDTO>(BasePaginationRequest paginationRequest, IQueryable<TDTO> queryable, bool pagination)
-        {
-            throw new NotImplementedException();
-        }
+        //IQueryable<TDTO> IGenericRepository<T>.Ordering<TDTO>(BasePaginationRequest paginationRequest, IQueryable<TDTO> queryable, bool pagination)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public async Task<T> GetByIdAsync(Guid id)
         {
