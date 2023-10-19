@@ -1,4 +1,4 @@
-﻿namespace CongresoSlade.Application.DTOs.Response
+﻿namespace CongresoSlade.Application.DTOs.Response.EventoResponse
 {
     public class EventoSelectResponseDTO
     {

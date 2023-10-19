@@ -11,6 +11,7 @@ namespace CongresoSlade.Infrastructure.Persistences.Interfaces
         //Declaración o matrícula de nuestras interfaes a nivel de repository
         IEventoRepository Evento { get; }
         IParticipanteRepository Participante { get; }
+        IAreaRepository Area { get; }
         void SaveChanges();
         Task SaveChangesAsync();
     }

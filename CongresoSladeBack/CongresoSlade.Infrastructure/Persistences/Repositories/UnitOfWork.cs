@@ -9,11 +9,13 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
         private readonly CongresoServerDbContext _context;
         public IEventoRepository Evento { get; private set; }
         public IParticipanteRepository Participante { get; private set; }
+        public IAreaRepository Area { get; private set; }
         public UnitOfWork(CongresoServerDbContext context)
         {
             _context = context;
             Evento = new EventoRepository(context);
             Participante = new ParticipanteRepository(context);
+            Area = new AreaRepository(context);
         }
 
         public void Dispose()

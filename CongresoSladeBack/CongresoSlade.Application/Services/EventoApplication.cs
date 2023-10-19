@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CongresoSlade.Application.Commons.Bases;
 using CongresoSlade.Application.DTOs.Request;
-using CongresoSlade.Application.DTOs.Response;
+using CongresoSlade.Application.DTOs.Response.EventoResponse;
 using CongresoSlade.Application.Interfaces;
 using CongresoSlade.Application.Validators.Evento;
 using CongresoSlade.Domain.Entities;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CongresoSlade.Application.DTOs.Response
+namespace CongresoSlade.Application.DTOs.Response.ParticipanteResponse
 {
     public class ParticipanteResponseDTO
     {

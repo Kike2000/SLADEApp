@@ -1,6 +1,6 @@
 ﻿using CongresoSlade.Application.Commons.Bases;
 using CongresoSlade.Application.DTOs.Request;
-using CongresoSlade.Application.DTOs.Response;
+using CongresoSlade.Application.DTOs.Response.EventoResponse;
 using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Commons.Bases.Response;
 using System;
