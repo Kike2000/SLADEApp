@@ -2,58 +2,47 @@
 using CongresoSlade.Application.Commons.Bases;
 using CongresoSlade.Application.DTOs.Request;
 using CongresoSlade.Application.DTOs.Response.AreaResponse;
+using CongresoSlade.Application.DTOs.Response.RegistroResponse;
 using CongresoSlade.Application.Interfaces;
 using CongresoSlade.Application.Validators.Area;
+using CongresoSlade.Application.Validators.Registro;
 using CongresoSlade.Domain.Entities;
 using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Commons.Bases.Response;
 using CongresoSlade.Infrastructure.Persistences.Interfaces;
 using CongresoSlade.Utilities.Static;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CongresoSlade.Application.Services
 {
-    public class AreaApplication : IAreaApplication
+    public class RegistroApplication : IRegistroApplication
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly AreaValidator _validationRules;
-        public AreaApplication(IUnitOfWork unitOfWork, IMapper mapper, AreaValidator validationRules)
+        private readonly RegistroValidator _validationRules;
+        public RegistroApplication(IMapper mapper, IUnitOfWork unitOfWork, RegistroValidator registroValidator)
         {
             _mapper = mapper;
-            _validationRules = validationRules;
             _unitOfWork = unitOfWork;
-        }
-        public async Task<BaseResponse<AreaResponseDTO>> AreaById(Guid id)
-        {
-            var response = new BaseResponse<AreaResponseDTO>();
-            var area = await _unitOfWork.Area.GetByIdAsync(id);
-            if (area != null)
-            {
-                response.IsSucessful = true;
-                response.Data = _mapper.Map<AreaResponseDTO>(area);
-                response.Message = ReplyMessage.MESSAGE_QUERY;
-            }
-            else
-            {
-                response.IsSucessful = false;
-                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
-            }
-            return response;
+            _validationRules = registroValidator;
         }
 
-        public async Task<BaseResponse<bool>> EditArea(Guid areaId, AreaRequestDTO requestDTO)
+        public async Task<BaseResponse<bool>> EditRegistro(Guid registroId, RegistroRequestDTO requestDTO)
         {
             var response = new BaseResponse<bool>();
-            var areaEdit = await AreaById(areaId);
-            if (areaEdit.Data == null)
+            var registroEdit = await RegistroById(registroId);
+            if (registroEdit.Data == null)
             {
                 response.IsSucessful = true;
                 response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
             }
-            var area = _mapper.Map<Area>(requestDTO);
-            area.Id = areaId;
-            response.Data = await _unitOfWork.Area.EditAsync(area);
+            var registro = _mapper.Map<Registro>(requestDTO);
+            registro.Id = registroId;
+            response.Data = await _unitOfWork.Registro.EditAsync(registro);
             if (response.Data)
             {
                 response.IsSucessful = true;
@@ -67,19 +56,20 @@ namespace CongresoSlade.Application.Services
             return response;
         }
 
-        public Task<BaseResponse<BaseEntityResponse<AreaResponseDTO>>> ListAreas(BaseFilterRequest filters)
+        public Task<BaseResponse<BaseEntityResponse<RegistroResponseDTO>>> ListRegistros(BaseFilterRequest filters)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<BaseResponse<IEnumerable<AreaSelectResponseDTO>>> ListSelectAreas()
+        public async Task<BaseResponse<IEnumerable<RegistroSelectResponseDTO>>> ListSelectRegistros()
         {
-            var response = new BaseResponse<IEnumerable<AreaSelectResponseDTO>>();
-            var areas = await _unitOfWork.Area.GetAlltAsync();
-            if (areas != null)
+
+            var response = new BaseResponse<IEnumerable<RegistroSelectResponseDTO>>();
+            var registros = await _unitOfWork.Registro.GetAlltAsync();
+            if (registros != null)
             {
                 response.IsSucessful = true;
-                response.Data = _mapper.Map<IEnumerable<AreaSelectResponseDTO>>(areas);
+                response.Data = _mapper.Map<IEnumerable<RegistroSelectResponseDTO>>(registros);
                 response.Message = ReplyMessage.MESSAGE_QUERY;
             }
             else
@@ -90,8 +80,9 @@ namespace CongresoSlade.Application.Services
             return response;
         }
 
-        public async Task<BaseResponse<bool>> RegisterArea(AreaRequestDTO requestDTO)
+        public async Task<BaseResponse<bool>> RegisterRegistro(RegistroRequestDTO requestDTO)
         {
+
             var response = new BaseResponse<bool>();
             var validationResult = await _validationRules.ValidateAsync(requestDTO);
             if (!validationResult.IsValid)
@@ -101,9 +92,9 @@ namespace CongresoSlade.Application.Services
                 response.Errors = validationResult.Errors;
                 return response;
             }
-            var area = _mapper.Map<Area>(requestDTO);
-            area.Id = Guid.NewGuid();
-            response.Data = await _unitOfWork.Area.RegisterAsync(area);
+            var registro = _mapper.Map<Registro>(requestDTO);
+            registro.Id = Guid.NewGuid();
+            response.Data = await _unitOfWork.Registro.RegisterAsync(registro);
             if (response.Data)
             {
                 response.IsSucessful = true;
@@ -117,18 +108,36 @@ namespace CongresoSlade.Application.Services
             return response;
         }
 
-        public async Task<BaseResponse<bool>> RemoveArea(Guid areaId)
+        public async Task<BaseResponse<RegistroResponseDTO>> RegistroById(Guid id)
+        {
+            var response = new BaseResponse<RegistroResponseDTO>();
+            var registro = await _unitOfWork.Registro.GetByIdAsync(id);
+            if (registro != null)
+            {
+                response.IsSucessful = true;
+                response.Data = _mapper.Map<RegistroResponseDTO>(registro);
+                response.Message = ReplyMessage.MESSAGE_QUERY;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+            }
+            return response;
+        }
+
+        public async Task<BaseResponse<bool>> RemoveRegistro(Guid registroId)
         {
             var response = new BaseResponse<bool>();
-            var areaExists = await AreaById(areaId);
-            if (areaExists.Data == null)
+            var registroExists = await RegistroById(registroId);
+            if (registroExists.Data == null)
             {
                 response.IsSucessful = true;
                 response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
                 return response;
             }
 
-            response.Data = await _unitOfWork.Area.RemoveAsync(areaId);
+            response.Data = await _unitOfWork.Registro.RemoveAsync(registroId);
             if (response.Data)
             {
                 response.IsSucessful = true;

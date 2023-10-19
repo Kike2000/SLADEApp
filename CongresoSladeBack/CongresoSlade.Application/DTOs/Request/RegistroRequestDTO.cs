@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CongresoSlade.Domain.Entities
+namespace CongresoSlade.Application.DTOs.Request
 {
-    public partial class Registro : BaseEntity
+    public class RegistroRequestDTO
     {
         public Guid ParticipanteId { get; set; }
         public Guid EventoId { get; set; }
