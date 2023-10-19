@@ -21,6 +21,12 @@ namespace CongresoSlade.API.Controllers
             var response = await _participanteEvento.ListParticipantes(filters);
             return Ok(response);
         }
+        [HttpPost("Select")]
+        public async Task<IActionResult> ListSelectEventos()
+        {
+            var response = await _participanteEvento.ListSelectParticipantes();
+            return Ok(response);
+        }
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterEvento([FromBody] ParticipanteRequestDTO filters)
         {
@@ -33,5 +39,12 @@ namespace CongresoSlade.API.Controllers
             var response = await _participanteEvento.EditParticipante(ParticipanteId, filters);
             return Ok(response);
         }
+        [HttpDelete("Remove/{ParticipanteId}")]
+        public async Task<IActionResult> RemoveParticipante(Guid ParticipanteId)
+        {
+            var response = await _participanteEvento.RemoveParticipante(ParticipanteId);
+            return Ok(response);
+        }
+
     }
 }

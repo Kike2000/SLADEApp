@@ -95,9 +95,22 @@ namespace CongresoSlade.Application.Services
             }
             return response;
         }
-        public Task<BaseResponse<IEnumerable<ParticipanteSelectResponseDTO>>> ListSelectParticipantes()
+        public async Task<BaseResponse<IEnumerable<ParticipanteSelectResponseDTO>>> ListSelectParticipantes()
         {
-            throw new NotImplementedException();
+            var response = new BaseResponse<IEnumerable<ParticipanteSelectResponseDTO>>();
+            var participantes = await _unitOfWork.Participante.GetAlltAsync();
+            if (participantes != null)
+            {
+                response.IsSucessful = true;
+                response.Data = _mapper.Map<IEnumerable<ParticipanteSelectResponseDTO>>(participantes);
+                response.Message = ReplyMessage.MESSAGE_QUERY;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+            }
+            return response;
         }
 
         public async Task<BaseResponse<ParticipanteResponseDTO>> ParticipanteById(Guid id)
@@ -118,9 +131,28 @@ namespace CongresoSlade.Application.Services
             return response;
         }
 
-        public Task<BaseResponse<bool>> RemoveParticipante(Guid participanteId)
+        public async Task<BaseResponse<bool>> RemoveParticipante(Guid participanteId)
         {
-            throw new NotImplementedException();
+            var response = new BaseResponse<bool>();
+            var participanteExist = await ParticipanteById(participanteId);
+            if (participanteExist.Data == null)
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+                return response;
+            }
+            response.Data = await _unitOfWork.Participante.RemoveAsync(participanteId);
+            if (response.Data)
+            {
+                response.IsSucessful = true;
+                response.Message = ReplyMessage.MESSAGE_DELETE;
+            }
+            else
+            {
+                response.IsSucessful = false;
+                response.Message = ReplyMessage.MESSAGE_FAIL;
+            }
+            return response;
         }
     }
 }

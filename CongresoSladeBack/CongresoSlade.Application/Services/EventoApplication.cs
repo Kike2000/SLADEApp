@@ -139,6 +139,7 @@ namespace CongresoSlade.Application.Services
             {
                 response.IsSucessful = true;
                 response.Message = ReplyMessage.MESSAGE_QUERY_EMPTY;
+                return response;
             }
 
             response.Data = await _unitOfWork.Evento.RemoveAsync(eventoId);

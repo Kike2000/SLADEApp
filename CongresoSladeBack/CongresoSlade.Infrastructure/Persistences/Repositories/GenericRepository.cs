@@ -53,12 +53,12 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
 
         public async Task<bool> RemoveAsync(Guid id)
         {
-            var evento = await _context.Eventos.FirstOrDefaultAsync(x => x.Id == id);
-            if (evento == null)
+            var entity = await _entity!.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(id));
+            if (entity == null)
             {
                 return false;
             }
-            _context.Eventos.Remove(evento);
+            _context.Remove(entity);
 
             var affectedRows = await _context.SaveChangesAsync();
             return affectedRows > 0;
