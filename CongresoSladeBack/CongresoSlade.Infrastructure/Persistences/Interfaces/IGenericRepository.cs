@@ -14,6 +14,7 @@ namespace CongresoSlade.Infrastructure.Persistences.Interfaces
         Task<IEnumerable<T>> GetAlltAsync();
         Task<T> GetByIdAsync(Guid id);
         Task<bool> RegisterAsync(T entity);
+        Task<bool> RegisterUserAsync(T entity);
         Task<bool> EditAsync(T entity);
         Task<bool> RemoveAsync(Guid id);
         IQueryable<T> GetEntityQuery(Expression<Func<T, bool>>? filter = null);

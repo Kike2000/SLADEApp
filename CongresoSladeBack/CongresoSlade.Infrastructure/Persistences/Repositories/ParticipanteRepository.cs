@@ -3,6 +3,7 @@ using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Commons.Bases.Response;
 using CongresoSlade.Infrastructure.Persistences.Context;
 using CongresoSlade.Infrastructure.Persistences.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

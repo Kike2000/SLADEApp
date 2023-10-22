@@ -13,6 +13,7 @@ namespace CongresoSlade.Infrastructure.Persistences.Interfaces
         IParticipanteRepository Participante { get; }
         IAreaRepository Area { get; }
         IRegistroRepository Registro { get; }
+        IUserRepository User { get; }
         void SaveChanges();
         Task SaveChangesAsync();
     }

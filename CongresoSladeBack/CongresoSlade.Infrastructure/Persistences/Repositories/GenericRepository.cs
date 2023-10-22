@@ -3,7 +3,9 @@ using CongresoSlade.Infrastructure.Commons.Bases.Request;
 using CongresoSlade.Infrastructure.Helpers;
 using CongresoSlade.Infrastructure.Persistences.Context;
 using CongresoSlade.Infrastructure.Persistences.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 
@@ -81,6 +83,18 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
         {
             var getById = await _entity!.AsNoTracking().FirstOrDefaultAsync(x => x.Id.Equals(id));
             return getById!;
+        }
+
+        public async Task<bool> RegisterUserAsync(T entity)
+        {
+            var user = new AspNetUser { Password = entity.Password, Id = entity.Id };
+            //var result = await _userManager.CreateAsync(user, entity.Password);
+            //if (result.Succeeded)
+            //{
+            //    await _userManager.AddToRoleAsync(user, entity.Role);
+            //    return true;
+            //}
+            return false;
         }
     }
 }

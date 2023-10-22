@@ -174,3 +174,8 @@ C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSla
 C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\obj\Debug\net6.0\CongresoSlade.API.csproj.CopyComplete
 C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\obj\Debug\net6.0\CongresoSlade.API.genruntimeconfig.cache
 C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\obj\Debug\net6.0\ref\CongresoSlade.API.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\pedro\OneDrive\Documentos\GitHub\SladeApp\CongresoSladeBack\CongresoSlade.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

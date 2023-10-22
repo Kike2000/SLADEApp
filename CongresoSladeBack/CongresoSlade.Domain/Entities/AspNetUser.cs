@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CongresoSlade.Domain.Entities
 {
-    public partial class AspNetUser
+    public partial class AspNetUser : BaseEntity
     {
         public AspNetUser()
         {
@@ -13,7 +13,6 @@ namespace CongresoSlade.Domain.Entities
             Roles = new HashSet<AspNetRole>();
         }
 
-        public string Id { get; set; } = null!;
         public string? UserName { get; set; }
         public string? NormalizedUserName { get; set; }
         public string? Email { get; set; }

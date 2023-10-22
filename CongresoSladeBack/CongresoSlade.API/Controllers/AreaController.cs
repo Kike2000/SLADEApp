@@ -15,17 +15,25 @@ namespace CongresoSlade.API.Controllers
             _areaApplication = areaApplication;
         }
 
-        [HttpGet("Select")]
-        public async Task<IActionResult> ListSelectEventos()
-        {
-            var response = await _areaApplication.ListSelectAreas();
-            return Ok(response);
-        }
 
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] AreaRequestDTO request)
         {
             var response = await _areaApplication.RegisterArea(request);
+            return Ok(response);
+        }
+
+        [HttpPost("Edit/{AreaId}")]
+        public async Task<IActionResult> EditEvento(Guid AreaId, AreaRequestDTO filters)
+        {
+            var response = await _areaApplication.EditArea(AreaId, filters);
+            return Ok(response);
+        }
+
+        [HttpGet("Select")]
+        public async Task<IActionResult> ListSelectEventos()
+        {
+            var response = await _areaApplication.ListSelectAreas();
             return Ok(response);
         }
 
@@ -36,11 +44,5 @@ namespace CongresoSlade.API.Controllers
             return Ok(response);
         }
 
-        [HttpPost("Edit/{AreaId}")]
-        public async Task<IActionResult> EditEvento(Guid AreaId, AreaRequestDTO filters)
-        {
-            var response = await _areaApplication.EditArea(AreaId, filters);
-            return Ok(response);
-        }
     }
 }
