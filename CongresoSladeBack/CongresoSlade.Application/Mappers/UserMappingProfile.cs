@@ -12,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace CongresoSlade.Application.Mappers
 {
-    public class UserMappingProfile : Profile
-    {
-        public UserMappingProfile()
-        {
+    //public class UserMappingProfile : Profile
+    //{
+    //    public UserMappingProfile()
+    //    {
 
-            CreateMap<AspNetUser, UserResponseDTO>()
-               .ForMember(x => x.Id, x => x.MapFrom(y => y.Id));
+    //        CreateMap<AspNetUser, UserResponseDTO>()
+    //           .ForMember(x => x.Id, x => x.MapFrom(y => y.Id));
 
-            CreateMap<BaseEntityResponse<AspNetUser>, BaseEntityResponse<UserResponseDTO>>().ReverseMap();
-            CreateMap<UserRequestDTO, AspNetUser>();
-            CreateMap<AspNetUser, UserSelectResponseDTO>()
-                .ForMember(x => x.Id, x => x.MapFrom(x => x.Id))
-                .ReverseMap();
-        }
-    }
+    //        CreateMap<BaseEntityResponse<AspNetUser>, BaseEntityResponse<UserResponseDTO>>().ReverseMap();
+    //        CreateMap<UserRequestDTO, AspNetUser>();
+    //        CreateMap<AspNetUser, UserSelectResponseDTO>()
+    //            .ForMember(x => x.Id, x => x.MapFrom(x => x.Id))
+    //            .ReverseMap();
+    //    }
+    //}
 }

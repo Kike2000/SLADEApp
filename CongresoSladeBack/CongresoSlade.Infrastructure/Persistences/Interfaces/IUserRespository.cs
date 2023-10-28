@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace CongresoSlade.Infrastructure.Persistences.Interfaces
 {
 
-    public interface IUserRepository : IGenericRepository<AspNetUser>
-    {
-        Task<BaseEntityResponse<AspNetUser>> ListUsers(BaseFilterRequest filters);
-    }
+    //public interface IUserRepository : IGenericRepository<AspNetUser>
+    //{
+    //    Task<BaseEntityResponse<AspNetUser>> ListUsers(BaseFilterRequest filters);
+    //}
 }

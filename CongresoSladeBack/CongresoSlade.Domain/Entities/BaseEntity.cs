@@ -9,7 +9,7 @@ namespace CongresoSlade.Domain.Entities
     public abstract class BaseEntity
     {
         public Guid Id { get; set; }
-        public string? Password { get; set; }
-        public string? Role { get; set; }
+        //public string? Password { get; set; }
+        //public string? Role { get; set; }
     }
 }

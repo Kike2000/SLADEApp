@@ -1,6 +1,8 @@
 ﻿@page "/"
 @page "/Agenda"
+@using CongresoServer.DTOs.Response;
 @using CongresoServer.Model
+@using Newtonsoft.Json;
 @using NexLead.Pages.Admin.Lead
 @inject ApplicationDbContext _DbContext
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
@@ -37,105 +39,106 @@
                             <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
                                 @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                            @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                @if (item.Nombre.Contains("Mesa 1"))
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    @if (item.Nombre.Contains("Mesa 1"))
                                     {
-                                    <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Abrir Conferencias Asociadas")" />
+                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Abrir Conferencias Asociadas")" />
                                     }
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                            @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                            @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                @if (item.Nombre.Contains("Mesa 2"))
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    @if (item.Nombre.Contains("Mesa 2"))
                                     {
-                                    <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
+                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
                                     }
                                 }
-                        </MudTreeViewItem>
-                        <br />
-                        <MudText Class="ml-1" Typo="Typo.h5">Día 2: Viernes 28 de octubre de 2022</MudText>
-                        <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
-                            @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            </MudTreeViewItem>
+                            <br />
+                            <MudText Class="ml-1" Typo="Typo.h5">Día 2: Viernes 28 de octubre de 2022</MudText>
+                            <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                            @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                @if (item.Nombre.Contains("Mesa 3"))
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    @if (item.Nombre.Contains("Mesa 3"))
                                     {
-                                    <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
+                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
                                     }
-                                @if (item.Nombre.Contains("Mesa 4"))
+                                    @if (item.Nombre.Contains("Mesa 4"))
                                     {
-                                    <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
+                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
                                     }
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                            @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                            @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <br />
-                        <MudText Class="ml-1" Typo="Typo.h5">Día 3: Sábado 29 de octubre de 2022</MudText>
-                        <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
-                            @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
+                            </MudTreeViewItem>
+                            <br />
+                            <MudText Class="ml-1" Typo="Typo.h5">Día 3: Sábado 29 de octubre de 2022</MudText>
+                            <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                            @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
+                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                            @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
+                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
-                        <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                            @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
+                            </MudTreeViewItem>
+                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
+                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
                                 {
-                                <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
+                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
                                 }
-                        </MudTreeViewItem>
+                            </MudTreeViewItem>
 
-                    </MudTreeView>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-    </MudGrid>
+                        </MudTreeView>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
     }
 </AuthorizeView>
 @code {
-    public List<Evento> Eventos { get; set; }
+    public ApiResponse<Evento> ApiResponseEvento { get; set; } = new ApiResponse<Evento>();
+    public List<Evento> Eventos { get; set; } = new List<Evento>();
     public List<Registro> Registros { get; set; }
     public Model.Participante Participante { get; set; }
     public List<EventoViewModel> EventoVMDia1 { get; set; }
@@ -181,100 +184,104 @@
     protected override async Task OnInitializedAsync()
     {
         var registros = _DbContext.Registro.Where(p => p.Asistencia).ToList();
-
-        Eventos = new List<Evento>();
-        Eventos = _DbContext.Evento.OrderBy(p => p.HoraInicio).ToList();
         var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
         var current = authstate.User.Identity.Name;
         Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
         EventoVMDia1 = new List<EventoViewModel>();
         EventoVMDia2 = new List<EventoViewModel>();
         EventoVMDia3 = new List<EventoViewModel>();
-        var eventos = _DbContext.Evento.ToList();
+        using var client = new HttpClient();
+        var response = await client.GetAsync("https://localhost:7047/api/Evento/select");
+        var content = await response.Content.ReadAsStringAsync();
 
-        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(27) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
-        {
-            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
-            var eventoDia1 = new EventoViewModel
-                {
-                    Nombre = item.Nombre,
-                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
-                    Lugar = area.Nombre,
-                    Id = item.Id
-                };
-            if (Participante != null)
-            {
-                bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
-                if (registro)
-                {
-                    eventoDia1.BackgroundColor = "#F17B6F";
-                    eventoDia1.Color = "white";
-                }
-                else
-                {
-                    eventoDia1.BackgroundColor = "transparent";
-                    eventoDia1.Color = "dodgerblue";
-                }
-            }
-            EventoVMDia1.Add(eventoDia1);
-        }
-        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(28) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
-        {
-            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
-            var eventoDia2 = new EventoViewModel
-                {
-                    Nombre = item.Nombre,
-                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
-                    Lugar = area.Nombre,
-                    Id = item.Id
-                };
-            if (Participante != null)
-            {
-                bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
-                if (registro)
-                {
-                    eventoDia2.BackgroundColor = "#F17B6F";
-                    eventoDia2.Color = "white";
-                }
-                else
-                {
-                    eventoDia2.BackgroundColor = "transparent";
-                    eventoDia2.Color = "dodgerblue";
-                }
-            }
-            EventoVMDia2.Add(eventoDia2);
-        }
-        foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(29) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
-        {
-            var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
-            var eventoDia3 = new EventoViewModel
-                {
-                    Nombre = item.Nombre,
-                    Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
-                    Lugar = area.Nombre,
-                    Id = item.Id
-                };
-            if (Participante != null)
-            {
-                bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
-                if (registro)
-                {
-                    eventoDia3.BackgroundColor = "#F17B6F";
-                    eventoDia3.Color = "white";
-                }
-                else
-                {
-                    eventoDia3.BackgroundColor = "transparent";
-                    eventoDia3.Color = "dodgerblue";
-                }
-            }
-            EventoVMDia3.Add(eventoDia3);
-        }
+        // Deserialize the wrapper object
+        ApiResponseEvento = JsonConvert.DeserializeObject<ApiResponse<Evento>>(content);
 
-        if (_DbContext.Evento.Any(p => p.AgendaAbierta == false))
-        {
-            disabled = true;
-        }
+
+        var tesr = 2;
+        // foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(27) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        // {
+        //     var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+        //     var eventoDia1 = new EventoViewModel
+        //         {
+        //             Nombre = item.Nombre,
+        //             Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+        //             Lugar = area.Nombre,
+        //             Id = item.Id
+        //         };
+        //     if (Participante != null)
+        //     {
+        //         bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
+        //         if (registro)
+        //         {
+        //             eventoDia1.BackgroundColor = "#F17B6F";
+        //             eventoDia1.Color = "white";
+        //         }
+        //         else
+        //         {
+        //             eventoDia1.BackgroundColor = "transparent";
+        //             eventoDia1.Color = "dodgerblue";
+        //         }
+        //     }
+        //     EventoVMDia1.Add(eventoDia1);
+        // }
+        // foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(28) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        // {
+        //     var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+        //     var eventoDia2 = new EventoViewModel
+        //         {
+        //             Nombre = item.Nombre,
+        //             Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+        //             Lugar = area.Nombre,
+        //             Id = item.Id
+        //         };
+        //     if (Participante != null)
+        //     {
+        //         bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
+        //         if (registro)
+        //         {
+        //             eventoDia2.BackgroundColor = "#F17B6F";
+        //             eventoDia2.Color = "white";
+        //         }
+        //         else
+        //         {
+        //             eventoDia2.BackgroundColor = "transparent";
+        //             eventoDia2.Color = "dodgerblue";
+        //         }
+        //     }
+        //     EventoVMDia2.Add(eventoDia2);
+        // }
+        // foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(29) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
+        // {
+        //     var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
+        //     var eventoDia3 = new EventoViewModel
+        //         {
+        //             Nombre = item.Nombre,
+        //             Texto = $"{item.HoraInicio.Value.Hour}:{item.HoraInicio.Value.Minute.ToString("00")} - {item.HoraTermino.Value.Hour}:{item.HoraTermino.Value.Minute.ToString("00")}  {item.Nombre}",
+        //             Lugar = area.Nombre,
+        //             Id = item.Id
+        //         };
+        //     if (Participante != null)
+        //     {
+        //         bool registro = _DbContext.Registro.Any(p => p.EventoId == item.Id && p.ParticipanteId == Participante.Id);
+        //         if (registro)
+        //         {
+        //             eventoDia3.BackgroundColor = "#F17B6F";
+        //             eventoDia3.Color = "white";
+        //         }
+        //         else
+        //         {
+        //             eventoDia3.BackgroundColor = "transparent";
+        //             eventoDia3.Color = "dodgerblue";
+        //         }
+        //     }
+        //     EventoVMDia3.Add(eventoDia3);
+        // }
+
+        // if (_DbContext.Evento.Any(p => p.AgendaAbierta == false))
+        // {
+        //     disabled = true;
+        // }
     }
 
     private async Task ReabrirOCerrar()

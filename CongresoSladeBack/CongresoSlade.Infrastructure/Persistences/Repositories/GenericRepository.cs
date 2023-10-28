@@ -85,16 +85,16 @@ namespace CongresoSlade.Infrastructure.Persistences.Repositories
             return getById!;
         }
 
-        public async Task<bool> RegisterUserAsync(T entity)
-        {
-            var user = new AspNetUser { Password = entity.Password, Id = entity.Id };
-            //var result = await _userManager.CreateAsync(user, entity.Password);
-            //if (result.Succeeded)
-            //{
-            //    await _userManager.AddToRoleAsync(user, entity.Role);
-            //    return true;
-            //}
-            return false;
-        }
+        //public async Task<bool> RegisterUserAsync(T entity)
+        //{
+        //    var user = new AspNetUser { Password = entity.Password, Id = entity.Id };
+        //    //var result = await _userManager.CreateAsync(user, entity.Password);
+        //    //if (result.Succeeded)
+        //    //{
+        //    //    await _userManager.AddToRoleAsync(user, entity.Role);
+        //    //    return true;
+        //    //}
+        //    return false;
+        //}
     }
 }

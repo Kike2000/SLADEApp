@@ -28,7 +28,8 @@ namespace CongresoSlade.Application.Extensions
             services.AddScoped<IEventoApplication, EventoApplication>();
             services.AddScoped<IParticipanteApplication, ParticipanteApplication>();
             services.AddScoped<IRegistroApplication, RegistroApplication>();
-            services.AddScoped<IUserApplication, UserApplication>();
+            //services.AddScoped<IUserApplication, UserApplication>();
+            services.AddScoped<IAreaApplication, AreaApplication>();
             return services;
         }
     }
