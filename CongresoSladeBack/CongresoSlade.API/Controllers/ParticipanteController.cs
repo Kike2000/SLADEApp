@@ -21,7 +21,7 @@ namespace CongresoSlade.API.Controllers
             var response = await _participanteEvento.ListParticipantes(filters);
             return Ok(response);
         }
-        [HttpPost("Select")]
+        [HttpGet("Select")]
         public async Task<IActionResult> ListSelectEventos()
         {
             var response = await _participanteEvento.ListSelectParticipantes();

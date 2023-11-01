@@ -1,6 +1,8 @@
 ﻿@page "/Participantes"
 @using Microsoft.AspNetCore.Identity
+@using Newtonsoft.Json
 @using Npgsql
+@using CongresoServer.DTOs.Response;
 @inject ApplicationDbContext _DbContext
 @inject ISnackbar Snackbar
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
@@ -57,104 +59,35 @@
     public Registro Registro { get; set; }
     public string QRCodeSr { get; set; }
     private string searchString = null;
-
-    //private void OnSearch(string text)
-    //{
-    //    IEnumerable<Model.UserViewModel> data = UserVM;
-    //    searchString = text;
-    //    data = data.Where(element =>
-    //    {
-    //        if (string.IsNullOrWhiteSpace(searchString))
-    //            return false;
-    //        if (element.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase))
-    //            return true;
-    //        if (element.Nombre.Contains(searchString, StringComparison.OrdinalIgnoreCase))
-    //            return true;
-    //        return false;
-    //    }).ToArray();
-    //    if (data.Count() == 0)
-    //    {
-    //        var users = _DbContext.Users.ToList();
-    //        UserVM = new List<UserViewModel>();
-    //        foreach (var user in users)
-    //        {
-    //            var userRole = _DbContext.UserRoles.FirstOrDefault(p => p.UserId == user.Id);
-    //            var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == user.Email);
-    //            if (participante == null) { participante = new Participante(); participante.Nombre = user.Email; }
-    //            var item = new UserViewModel
-    //                {
-    //                    Email = user.Email,
-    //                    Rol = _DbContext.Roles.FirstOrDefault(p => p.Id == userRole.RoleId).Name,
-    //                    Nombre = participante.Nombre,
-    //                    ParticipanteId = participante.Id
-    //                };
-    //            UserVM.Add(item);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        UserVM = data.ToList();
-    //    }
-    //    StateHasChanged();
-    //}
+    public bool loading = true;
     public List<UserViewModel>? UserVM { get; set; }
 
+    public ApiResponse<Participante> ApiResponseParticipante { get; set; } = new ApiResponse<Participante>();
     protected override async Task OnInitializedAsync()
     {
         UserVM = new List<UserViewModel>();
-        var Users = _DbContext.Users.ToList();
-        var databaseUrl = "postgresql://postgres:lEIF3iOi0Fj9JhyKXh9j@containers-us-west-104.railway.app:7992/railway";
-        var databaseUri = new Uri(databaseUrl);
-        var userInfo = databaseUri.UserInfo.Split(':');
-        var Role = "";
-        var UserId = "";
-        var builder = new NpgsqlConnectionStringBuilder
-            {
-                Host = databaseUri.Host,
-                Port = databaseUri.Port,
-                Username = userInfo[0],
-                Password = userInfo[1],
-                Database = databaseUri.LocalPath.TrimStart('/'),
-                SslMode = SslMode.Require,
-                TrustServerCertificate = true
-            };
-        var test2 = builder.ToString();
-        var ParticipanteId = "";
-        using (NpgsqlConnection conn = new NpgsqlConnection(test2))
+        using var client = new HttpClient();
+        var response = await client.GetAsync("https://localhost:7047/api/Participante/select");
+        if (response.IsSuccessStatusCode)
         {
-            conn.Open();
-            string query = $"SELECT e.\"Id\", e.\"Email\", p.\"Procedencia\",p.\"Nombre\", p.\"Id\"  FROM  \"AspNetUsers\" e join \"AspNetUserRoles\" a on e.\"Id\"= a.\"UserId\" join \"Participante\" p on e.\"Email\"= p.\"Email\" WHERE a.\"RoleId\" = 'd0331317-69ae-44bb-9bd8-02fbbd44b8ed' order by p.\"Nombre\" asc";
-            NpgsqlCommand cmd2 = new NpgsqlCommand(query, conn);
-            NpgsqlDataReader dr = cmd2.ExecuteReader();
-            while (dr.Read())
+            var content = await response.Content.ReadAsStringAsync();
+            ApiResponseParticipante = JsonConvert.DeserializeObject<ApiResponse<Participante>>(content);
+            foreach (var participante in ApiResponseParticipante.data)
             {
                 var item = new UserViewModel
                     {
-                        Email = dr[1].ToString(),
-                        Rol = dr[2].ToString(),
-                        Nombre = dr[3].ToString(),
-                        ParticipanteId = Guid.Parse(dr[4].ToString()),
-                        Id = dr[0].ToString()
+                        Email = participante.Email,
+                        // Rol = dr[2].ToString(),
+                        Nombre = participante.Nombre,
+                        ParticipanteId = participante.Id,
+                        // Id = dr[0].ToString()
                     };
 
                 UserVM.Add(item);
             }
+            loading = false;
+            await InvokeAsync(StateHasChanged);
         }
-        //foreach (var user in Users)
-        //{
-        //    var userRole = _DbContext.UserRoles.FirstOrDefault(p => p.UserId == user.Id);
-        //    var participante = _DbContext.Participante.FirstOrDefault(p => p.Email == user.Email);
-        //    if (participante == null) { participante = new Participante(); participante.Nombre = user.Email; }
-        //    var item = new UserViewModel
-        //        {
-        //            Email = user.Email,
-        //            Rol = _DbContext.Roles.FirstOrDefault(p => p.Id == userRole.RoleId).Name,
-        //            Nombre = participante.Nombre,
-        //            ParticipanteId = participante.Id,
-        //            Id = user.Id
-        //        };
-        //    UserVM.Add(item);
-        //}
     }
 
     private void EditarRegistroUsuario(UserViewModel userVM)

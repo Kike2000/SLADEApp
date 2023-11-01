@@ -16,126 +16,46 @@
 </style>
 <PageTitle>Agenda - SLADE</PageTitle>
 @attribute [Authorize]
-<AuthorizeView>
-    @if (@context.User.Identity.IsAuthenticated)
-    {
-        <MudGrid>
-            <MudItem xs="8" sm="8" md="9">
-            </MudItem>
-        </MudGrid>
-        <MudGrid>
-            <MudItem xs="12" sm="12" md="12">
-                <MudCard Style="height:100%;border-color:#F2BC40; border-width: thin;">
-                    <MudCardHeader Style="background-color:#F2BC40">
-                        <CardHeaderContent>
-                            <div class="d-flex justify-center">
-                                <MudText Typo="Typo.h4" Color="MudBlazor.Color.Inherit"><b>Agenda del Congreso</b></MudText>
-                            </div>
-                        </CardHeaderContent>
-                    </MudCardHeader>
-                    <MudCardContent Class="px-0 ml-2">
-                        <MudTreeView T="string">
-                            <MudText Class="ml-3" Typo="Typo.h5">Día 1: Jueves 27 de octubre de 2022</MudText>
-                            <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
-                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                    @if (item.Nombre.Contains("Mesa 1"))
+@if (loading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <AuthorizeView>
+        @if (@context.User.Identity.IsAuthenticated)
+        {
+            <MudGrid>
+                <MudItem xs="8" sm="8" md="9">
+                </MudItem>
+            </MudGrid>
+            <MudGrid>
+                <MudItem xs="12" sm="12" md="12">
+                    <MudCard Style="height:100%;border-color:#F2BC40; border-width: thin;">
+                        <MudCardHeader Style="background-color:#F2BC40">
+                            <CardHeaderContent>
+                                <div class="d-flex justify-center">
+                                    <MudText Typo="Typo.h4" Color="MudBlazor.Color.Inherit"><b>Agenda del Congreso</b></MudText>
+                                </div>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="px-0 ml-2">
+                            <MudTreeView T="string">
+                                <MudText Class="ml-3" Typo="Typo.h6">Eventos</MudText>
+                                <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
+                                    @foreach (var item in ApiResponseEvento.data)
                                     {
-                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Abrir Conferencias Asociadas")" />
+                                        <MudTreeViewItem Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Nombre" />
                                     }
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                                @foreach (var item in EventoVMDia1.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                    @if (item.Nombre.Contains("Mesa 2"))
-                                    {
-                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
-                                    }
-                                }
-                            </MudTreeViewItem>
-                            <br />
-                            <MudText Class="ml-1" Typo="Typo.h5">Día 2: Viernes 28 de octubre de 2022</MudText>
-                            <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
-                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                    @if (item.Nombre.Contains("Mesa 3"))
-                                    {
-                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
-                                    }
-                                    @if (item.Nombre.Contains("Mesa 4"))
-                                    {
-                                        <MudTreeViewItem OnClick="(e)=>OpenDialog(item.Nombre)" Style="@($"color:#F2BC40;font-style: italic;background-color:{@item.BackgroundColor}")" Class="cursor-pointer" Value="@("Ver Conferencias Asociadas")" />
-                                    }
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                                @foreach (var item in EventoVMDia2.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <br />
-                            <MudText Class="ml-1" Typo="Typo.h5">Día 3: Sábado 29 de octubre de 2022</MudText>
-                            <MudTreeViewItem Expanded=true Value="@("Gran Salón Vallarta")">
-                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Gran Salón Vallarta")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 1")">
-                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 1")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 2")">
-                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 2")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-                            <MudTreeViewItem Expanded=true Value="@("Salón Vallarta 3")">
-                                @foreach (var item in EventoVMDia3.Where(p => p.Lugar.Contains("Salón Vallarta 3")))
-                                {
-                                    <MudTreeViewItem Style="@($"color:{@item.Color};background-color:{@item.BackgroundColor}")" Class="cursor-pointer" OnClick="(e)=>InfoEvento(item.Id.ToString())" Value="@item.Texto" />
-                                }
-                            </MudTreeViewItem>
-
-                        </MudTreeView>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-        </MudGrid>
-    }
-</AuthorizeView>
+                                </MudTreeViewItem>
+                            </MudTreeView>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        }
+    </AuthorizeView>
+}
 @code {
     public ApiResponse<Evento> ApiResponseEvento { get; set; } = new ApiResponse<Evento>();
     public List<Evento> Eventos { get; set; } = new List<Evento>();
@@ -147,7 +67,7 @@
     private TreeItemData ActivatedValue { get; set; }
     public bool disabled { get; set; } = false;
     private HashSet<TreeItemData> SelectedValues { get; set; }
-
+    private bool loading = true;
     private HashSet<TreeItemData> TreeItems { get; set; } = new HashSet<TreeItemData>();
 
     public class TreeItemData
@@ -183,22 +103,29 @@
     }
     protected override async Task OnInitializedAsync()
     {
-        var registros = _DbContext.Registro.Where(p => p.Asistencia).ToList();
-        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
-        var current = authstate.User.Identity.Name;
-        Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
+        // var registros = _DbContext.Registro.Where(p => p.Asistencia).ToList();
+        // var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        // var current = authstate.User.Identity.Name;
+        // Participante = _DbContext.Participante.FirstOrDefault(p => p.Email == current);
         EventoVMDia1 = new List<EventoViewModel>();
         EventoVMDia2 = new List<EventoViewModel>();
         EventoVMDia3 = new List<EventoViewModel>();
         using var client = new HttpClient();
         var response = await client.GetAsync("https://localhost:7047/api/Evento/select");
-        var content = await response.Content.ReadAsStringAsync();
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            ApiResponseEvento = JsonConvert.DeserializeObject<ApiResponse<Evento>>(content);
+            // Process the content as needed
+            // ...
+
+            // Update the UI if necessary
+            loading = false;
+            await InvokeAsync(StateHasChanged);
+        }
 
         // Deserialize the wrapper object
-        ApiResponseEvento = JsonConvert.DeserializeObject<ApiResponse<Evento>>(content);
 
-
-        var tesr = 2;
         // foreach (var item in eventos.Where(p => p.HoraInicio.Value.Day.Equals(27) && p.HoraInicio.Value.Month.Equals(10)).OrderBy(p => p.HoraInicio))
         // {
         //     var area = _DbContext.Area.FirstOrDefault(p => p.Id == item.AreaId);
@@ -318,22 +245,5 @@
         }
         var result = DialogService.Show<Dialogs>("Conferencias Asociadas a la Mesa", parameters, options);
         var final = await result.Result;
-    }
-
-    EarningReport[] earningReports = new EarningReport[]
-    {
-        new EarningReport { Name = "Lunees", Title = "Reactor Engineer", Avatar = "https://avatars2.githubusercontent.com/u/71094850?s=460&u=66c16f5bb7d27dc751f6759a82a3a070c8c7fe4b&v=4", Salary = "$0.99", Severity = Color.Success, SeverityTitle = "Low"},
-        new EarningReport { Name = "Mikes-gh", Title = "Developer", Avatar = "https://avatars.githubusercontent.com/u/16208742?s=120&v=4", Salary = "$19.12K", Severity = Color.Secondary, SeverityTitle = "Medium"},
-        new EarningReport { Name = "Garderoben", Title = "CSS Magician", Avatar = "https://avatars2.githubusercontent.com/u/10367109?s=460&amp;u=2abf95f9e01132e8e2915def42895ffe99c5d2c6&amp;v=4", Salary = "$1337", Severity = Color.Primary, SeverityTitle = "High"},
-    };
-
-    class EarningReport
-    {
-        public string Avatar;
-        public string Name;
-        public string Title;
-        public Color Severity;
-        public string SeverityTitle;
-        public string Salary;
     }
 }

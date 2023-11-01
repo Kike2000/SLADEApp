@@ -13,5 +13,6 @@ namespace CongresoSlade.Application.DTOs.Response.ParticipanteResponse
         public string? Email { get; set; }
         public string? Procedencia { get; set; }
         public string? Institucion { get; set; }
+        public string? ParticipanteId { get; set; }
     }
 }

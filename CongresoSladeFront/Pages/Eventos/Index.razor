@@ -1,5 +1,7 @@
 ﻿@page "/Eventos"
+@using CongresoServer.DTOs.Response;
 @using Microsoft.AspNetCore.Identity
+@using Newtonsoft.Json;
 @inject ApplicationDbContext _DbContext
 @inject ISnackbar Snackbar
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
@@ -7,48 +9,68 @@
 @inject NavigationManager _NavigationManager
 
 <PageTitle>Conferencias - SLADE</PageTitle>
-<MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Conferencias</MudText>
-<MudGrid>
-    <MudItem xs="8" sm="8" md="9">
+@if (loading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <MudText Typo="Typo.h5" Color="MudBlazor.Color.Primary" Class="mb-4">Conferencias</MudText>
+    <MudGrid>
+        <MudItem xs="8" sm="8" md="9">
 
-    </MudItem>
-    <MudItem xs="4" sm="4" md="3">
-        <MudButton Variant="Variant.Filled" Href="/Eventos/Crear" Color="Color.Success">Registrar Conferencia</MudButton>
-    </MudItem>
-</MudGrid>
-<MudGrid>
-    <MudItem xs="12" sm="12" md="12">
-        <MudCard Style="height:100%;">
-            <MudCardContent>
-                <MudGrid>
-                    <MudItem xs="12" sm="12" md="12">
-                        <MudTable T="Model.Evento" Items="@Eventos.OrderBy(p=>p.HoraInicio)" Hover="true" Breakpoint="Breakpoint.Sm">
-                            <HeaderContent>
-                                <MudTh>Nombre</MudTh>
-                                <MudTh>Hora de Inicio</MudTh>
-                                <MudTh>Hora de Término</MudTh>
-                                <MudTh></MudTh>
-                            </HeaderContent>
-                            <RowTemplate>
-                                <MudTd DataLabel="Nombre"><MudLink Href="@($"/Eventos/Editar/{@context.Id}")">@context.Nombre</MudLink></MudTd>
-                                <MudTd DataLabel="Hora de Inicio">@context.HoraInicio</MudTd>
-                                <MudTd DataLabel="Hora de Término">@context.HoraTermino</MudTd>
-                                <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>Eliminar(context)" Color="Color.Error">Editar</MudButton></MudTd>
-                            </RowTemplate>
-                        </MudTable>
-                    </MudItem>
-                </MudGrid>
-            </MudCardContent>
-        </MudCard>
-    </MudItem>
-</MudGrid>
-
+        </MudItem>
+        <MudItem xs="4" sm="4" md="3">
+            <MudButton Variant="Variant.Filled" Href="/Eventos/Crear" Color="Color.Success">Registrar Conferencia</MudButton>
+        </MudItem>
+    </MudGrid>
+    <MudGrid>
+        <MudItem xs="12" sm="12" md="12">
+            <MudCard Style="height:100%;">
+                <MudCardContent>
+                    <MudGrid>
+                        <MudItem xs="12" sm="12" md="12">
+                            <MudTable T="Model.Evento" Items="@ApiResponseEvento.data.OrderBy(p=>p.HoraInicio)" Hover="true" Breakpoint="Breakpoint.Sm">
+                                <HeaderContent>
+                                    <MudTh>Nombre</MudTh>
+                                    <MudTh>Hora de Inicio</MudTh>
+                                    <MudTh>Hora de Término</MudTh>
+                                    <MudTh></MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd DataLabel="Nombre"><MudLink Href="@($"/Eventos/Editar/{@context.Id}")">@context.Nombre</MudLink></MudTd>
+                                    <MudTd DataLabel="Hora de Inicio">@context.HoraInicio</MudTd>
+                                    <MudTd DataLabel="Hora de Término">@context.HoraTermino</MudTd>
+                                    <MudTd DataLabel=""><MudButton Variant="Variant.Filled" OnClick="()=>Eliminar(context)" Color="Color.Error">Editar</MudButton></MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+}
 @code {
     public List<Evento> Eventos { get; set; }
+    public ApiResponse<Evento> ApiResponseEvento { get; set; } = new ApiResponse<Evento>();
+    private bool loading = true;
 
     protected override async Task OnInitializedAsync()
     {
-        Eventos = _DbContext.Evento.OrderByDescending(p=>p.HoraInicio).ToList();
+        using var client = new HttpClient();
+        var response = await client.GetAsync("https://localhost:7047/api/Evento/select");
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            ApiResponseEvento = JsonConvert.DeserializeObject<ApiResponse<Evento>>(content);
+            // Process the content as needed
+            // ...
+
+            // Update the UI if necessary
+            loading = false;
+            await InvokeAsync(StateHasChanged);
+        }
     }
 
     private void RegistrarNuevoEvento()
@@ -60,6 +82,6 @@
     {
         _DbContext.Evento.Remove(evento);
         await _DbContext.SaveChangesAsync();
-        Eventos = _DbContext.Evento.OrderByDescending(p=>p.HoraInicio).ToList();
+        Eventos = _DbContext.Evento.OrderByDescending(p => p.HoraInicio).ToList();
     }
 }
